@@ -303,6 +303,7 @@ Hero
       ├── Active now: `DashboardHero` — split layout (copy left, KPIs + bar chart + activity mock right) + `HeroPreviewHeader` (eyebrow + install command)
       ├── Built, dormant: `SaasSiteHero` (browser mock + feature cards), `LandingPageHero` (centered + logo strip), `PortfolioHero` (project grid mock)
       ├── `LegacySkillHero.jsx` preserved ("See how your app could look") — swap in via `heroTypes.js` for comparison, not wired by default
+      ├── Mobile/tablet (≤900px): preview split stacks; install `CopyCommand` and mock CTA buttons (`hero-preview-cta-row`) span full width with ellipsis on long commands; no horizontal overflow
       └── Per-skill shell decorations unchanged: clay blobs, playful shapes, neo/hand-drawn cards (`SkillHeroShell.jsx`); mock widgets use `--site-*` tokens
 
 LivePreviewCallout
@@ -326,7 +327,7 @@ HowItWorks          ← heading: "It's Never Been Easier"; asymmetric bento (pic
   └── Step 02 (run): accent gradient card, live `CopyCommand` (`npx getdrip add linear-modern` via `FEATURED_SKILL_ID`)
   └── Step 03 (apply): muted card, inline SVG mini browser (generic wireframe → styled UI with accent)
   └── Scroll entrance: `useInView` + `site-reveal-section`; title/subtitle use `site-reveal`; cards use custom opacity + 3D tilt (inward on side cards), staggered delays (280ms / 400ms / 520ms); `:has()` hover dims siblings (pattern from LivePreviewCallout)
-  └── Mobile (≤768px): stack command first, then pick, then apply; no 3D tilt; tablet (≤900px): run spans full width, pick + apply side by side
+  └── Mobile (≤768px): stack pick → run → apply (Step 01–03); no 3D tilt; tablet (≤900px): run spans full width, pick + apply side by side
 
 SkillsPreview       ← carousel / gallery of library skills
   └── Scroll entrance on title, cards (staggered), and show-more button

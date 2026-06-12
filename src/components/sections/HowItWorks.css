@@ -410,8 +410,8 @@
   .how-it-works-bento {
     grid-template-columns: 1fr;
     grid-template-areas:
-      'run'
       'pick'
+      'run'
       'apply';
     gap: 16px;
   }
