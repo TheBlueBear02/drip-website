@@ -14,7 +14,7 @@ function normalizeVideoUrl(url) {
   return normalized;
 }
 
-/** Resolve public-folder paths with Vite base (e.g. /new-drip-site/) */
+/** Resolve public-folder paths with Vite base (import.meta.env.BASE_URL) */
 function resolveVideoSrc(url) {
   const normalized = normalizeVideoUrl(url);
   if (!normalized) return '';

@@ -585,12 +585,12 @@ Hash routing means no 404 issues on GitHub Pages — the server always serves
 
 ### `vite.config.js`
 ```js
-export default defineConfig(({ command }) => ({
-  base: '/new-drip-site/',  // v2 GitHub Pages path (dev + production)
-  // Dev pre-middleware normalizes /, /new-drip-site, and other paths onto the base.
-  server: { open: '/new-drip-site/' },
-}))
+export default defineConfig({
+  plugins: [react()],
+})
 ```
+
+Site assets use the default Vite `base` of `/` (root). `import.meta.env.BASE_URL` and React Router `basename` stay in sync automatically.
 
 ### `.github/workflows/deploy.yml`
 ```yaml
@@ -613,8 +613,8 @@ jobs:
           publish_dir: ./dist
 ```
 
-Push to `main` → auto-builds → deploys to `gh-pages` branch → live at
-`https://yourusername.github.io/your-repo-name/`
+Push to `main` → auto-builds → deploys to `gh-pages` branch → live at the site root
+(e.g. `https://yourusername.github.io/` for a user/org Pages repo, or your custom domain).
 
 ---
 
