@@ -95,26 +95,18 @@
   gap: 6px;
   padding: 8px 14px;
   border-radius: var(--site-radius-md);
-  border: 1px solid var(--site-border);
   color: var(--site-text-muted);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   font-family: var(--site-font-body);
   transition: color var(--site-duration-sm) var(--site-ease),
-    border-color var(--site-duration-sm) var(--site-ease),
     background-color var(--site-duration-sm) var(--site-ease);
 }
 
 .nav-stars:hover {
   color: var(--site-text);
-  border-color: var(--site-border-strong);
   background-color: var(--site-surface-2);
-}
-
-/* Linear Modern only: make GitHub pill border more visible */
-html[data-skill="linear-modern"] .nav-stars {
-  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .nav-stars-icon {

@@ -34,7 +34,6 @@ function Hero() {
 
   const copyContent = (
     <>
-      <p className="hero-eyebrow">CURE THE "DEFAULT UI" LOOK</p>
       <h1 className="hero-headline">
         Your AI App Works,
         <br />
@@ -43,7 +42,7 @@ function Hero() {
         </span>
       </h1>
       <p className="hero-subheadline">
-        Save time and money by fixing the default AI look of your project with only one line and get back to vibe coding.
+        Save time and money by fixing the default AI look of your project in 10 secs and get back to vibe coding.
       </p>
       <div className="hero-cta-group">
         <p className="hero-try-label">I&apos;m building:</p>

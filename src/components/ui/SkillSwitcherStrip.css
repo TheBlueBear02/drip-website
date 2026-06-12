@@ -99,9 +99,9 @@
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
-  background-color: var(--site-surface);
+  background-color: transparent;
   border: 1px solid var(--site-accent);
-  border-radius: var(--site-radius-full);
+  border-radius: 0;
   color: var(--site-accent);
   font-size: 13px;
   font-weight: 500;
@@ -116,7 +116,7 @@
 
 .skill-switcher-type-anchor:hover,
 .skill-switcher-type-anchor--open {
-  background-color: var(--site-surface-2);
+  background-color: transparent;
   box-shadow: var(--site-shadow-sm);
 }
 
@@ -158,7 +158,7 @@
   list-style: none;
   background-color: var(--site-surface);
   border: 1px solid var(--site-border);
-  border-radius: var(--site-radius-md);
+  border-radius: 0;
   box-shadow: var(--site-shadow-md);
 }
 
@@ -174,7 +174,7 @@
   width: 100%;
   padding: 8px 10px;
   border: none;
-  border-radius: var(--site-radius-sm);
+  border-radius: 0;
   background: transparent;
   color: var(--site-text-muted);
   font-size: 13px;
@@ -204,7 +204,6 @@ html[data-skill="linear-modern"] .skill-switcher-strip {
   border-bottom-color: rgba(255, 255, 255, 0.12);
 }
 
-html[data-skill="linear-modern"] .skill-chip,
 html[data-skill="linear-modern"] .skill-switcher-type-anchor,
 html[data-skill="linear-modern"] .skill-switcher-type-menu {
   border-color: rgba(255, 255, 255, 0.22);
@@ -395,6 +394,12 @@ html[data-skill="linear-modern"] .skill-switcher-type-menu {
   flex-shrink: 0;
 }
 
+.skill-chip-icon-wrap {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
 .skill-chip-icon--home {
   color: #000;
 }
@@ -408,17 +413,77 @@ html[data-skill="linear-modern"] .skill-switcher-type-menu {
 }
 
 .skill-switcher-scroll .skill-chip {
+  position: relative;
   padding: 8px 12px;
   min-height: calc(18px + max(12px, 1.35em));
+  border: none;
+  background-color: transparent;
+}
+
+.skill-switcher-scroll > .skill-chip + .skill-chip::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background-color: var(--site-border);
+  pointer-events: none;
+}
+
+.skill-switcher-scroll .skill-chip:hover {
+  border: none;
+  background-color: transparent;
+  color: var(--site-text);
+}
+
+.skill-switcher-scroll .skill-chip:hover .skill-chip-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.skill-switcher-scroll .skill-chip-active,
+.skill-switcher-scroll .skill-chip-active:hover {
+  border: none;
+  background-color: transparent;
+  opacity: 1;
+}
+
+.skill-switcher-scroll .skill-chip-active:hover .skill-chip-name {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .skill-switcher-scroll .skill-chip--brand {
   padding-inline:12px;
+  background-color: transparent;
+}
+
+.skill-switcher-scroll .skill-chip--brand:hover,
+.skill-switcher-scroll .skill-chip--brand.skill-chip-active:hover {
+  background-color: transparent;
+}
+
+.skill-switcher-scroll .skill-chip--brand:hover .skill-chip-icon-wrap::after,
+.skill-switcher-scroll .skill-chip--brand.skill-chip-active:hover .skill-chip-icon-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.skill-switcher-scroll .skill-chip--brand.skill-chip-active {
+  background-color: transparent;
 }
 
 /* Step 1 project-type chips: contrast against strip surface */
 .skill-chip--project-type {
   padding: 7px 14px;
+  border-radius: 0;
   background-color: var(--site-surface);
   border-color: color-mix(in srgb, var(--site-text) 18%, var(--site-border));
   color: var(--site-text);

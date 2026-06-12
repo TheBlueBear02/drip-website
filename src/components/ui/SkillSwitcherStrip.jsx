@@ -272,18 +272,22 @@ function SkillSwitcherStrip() {
                 onClick={handleBrandClick}
                 aria-label="Default site theme"
               >
-                <Home
+                <span
                   className={[
-                    'skill-chip-icon',
+                    'skill-chip-icon-wrap',
                     'skill-chip-icon--home',
                     isDarkTheme ? 'skill-chip-icon--home-on-dark' : '',
                   ]
                     .filter(Boolean)
                     .join(' ')}
-                  size={12}
-                  strokeWidth={2.5}
-                  aria-hidden
-                />
+                >
+                  <Home
+                    className="skill-chip-icon"
+                    size={12}
+                    strokeWidth={2.5}
+                    aria-hidden
+                  />
+                </span>
               </button>
 
               {visibleSkills.map((skill) => {

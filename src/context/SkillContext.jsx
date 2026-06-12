@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useState } from 'react';
 import { getSkillFromSearch } from '../utils/resolveSkill';
-import { DEFAULT_HERO_TYPE } from '../data/heroTypes';
+import { DEFAULT_HERO_TYPE, getInitialHeroTypeFromUrl } from '../data/heroTypes';
 
 const SkillContext = createContext();
 
@@ -9,16 +9,29 @@ function getInitialActiveSkill() {
   return getSkillFromSearch(window.location.search);
 }
 
+const initialHeroType = getInitialHeroTypeFromUrl();
+
 export function SkillProvider({ children }) {
   const [activeSkill, setActiveSkill] = useState(getInitialActiveSkill); // The locked skill
   const [previewSkill, setPreviewSkill] = useState(null); // Temporary hover state
-  const [activeHeroType, setActiveHeroType] = useState(DEFAULT_HERO_TYPE);
-  const [hasSelectedProjectType, setHasSelectedProjectType] = useState(false);
+  const [activeHeroType, setActiveHeroType] = useState(initialHeroType.type);
+  const [hasSelectedProjectType, setHasSelectedProjectType] = useState(initialHeroType.hasSelected);
 
   const selectProjectType = (typeId) => {
     setActiveHeroType(typeId);
     setHasSelectedProjectType(true);
   };
+
+  const applyHeroTypeFromUrl = useCallback((typeId) => {
+    if (typeId) {
+      setActiveHeroType((current) => (current === typeId ? current : typeId));
+      setHasSelectedProjectType(true);
+      return;
+    }
+
+    setActiveHeroType((current) => (current === DEFAULT_HERO_TYPE ? current : DEFAULT_HERO_TYPE));
+    setHasSelectedProjectType(false);
+  }, []);
 
   // The rendered skill = previewSkill ?? activeSkill ?? getdrip-brand (site default)
   // null activeSkill = brand default. Hover preview wins over locked skill.
@@ -34,6 +47,7 @@ export function SkillProvider({ children }) {
         setPreviewSkill,
         setActiveHeroType,
         selectProjectType,
+        applyHeroTypeFromUrl,
       }}
     >
       {children}
