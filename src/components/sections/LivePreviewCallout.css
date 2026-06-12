@@ -1,0 +1,394 @@
+.skill-explainer {
+  padding: 72px 0;
+  background-color: var(--site-section-bg);
+  border-top: 1px solid var(--site-border);
+  border-bottom: 1px solid var(--site-border);
+  overflow: hidden;
+}
+
+.skill-explainer-title {
+  margin: 0 0 48px;
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: var(--site-head-weight, 600);
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: var(--site-text);
+  font-family: var(--site-font-section-title, var(--site-font-head));
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--site-duration-lg) var(--site-ease),
+    transform var(--site-duration-lg) var(--site-ease);
+}
+
+.skill-explainer--visible .skill-explainer-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-explainer-stage {
+  display: flex;
+  justify-content: center;
+  perspective: 1400px;
+}
+
+.skill-explainer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(560px, 1fr);
+  gap: 28px;
+  align-items: center;
+  max-width: 980px;
+  width: 100%;
+}
+
+.skill-explainer-card {
+  border-radius: var(--site-radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transition:
+    transform 0.75s var(--site-ease),
+    box-shadow var(--site-duration-md) var(--site-ease),
+    border-color var(--site-duration-md) var(--site-ease),
+    opacity 0.75s var(--site-ease),
+    filter var(--site-duration-md) var(--site-ease);
+}
+
+.skill-explainer-card--prompt {
+  padding: 18px 20px;
+  background-color: color-mix(in srgb, var(--site-text-muted) 6%, var(--site-bg));
+  border: 1px solid color-mix(in srgb, var(--site-text-muted) 18%, transparent);
+  transform: rotateY(18deg) rotate(2deg) translateY(52px) scale(0.94);
+  transform-origin: right center;
+}
+
+.skill-explainer-card--skill {
+  padding: 26px 28px;
+  min-width: 0;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--site-accent) 16%, var(--site-surface)) 0%,
+    color-mix(in srgb, var(--site-accent) 8%, var(--site-bg)) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--site-accent) 40%, transparent);
+  box-shadow: var(--site-shadow-md);
+  transform: rotateY(-16deg) rotate(-2deg) translateY(52px) scale(0.94);
+  transform-origin: left center;
+}
+
+.skill-explainer--visible .skill-explainer-card--prompt {
+  opacity: 0.9;
+  transform: rotateY(10deg) rotate(1.5deg);
+  transition-delay: 140ms;
+}
+
+.skill-explainer--visible .skill-explainer-card--skill {
+  opacity: 1;
+  transform: rotateY(-8deg) rotate(-1.5deg);
+  transition-delay: 300ms;
+}
+
+.skill-explainer-card-eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-family: var(--site-font-body);
+  line-height: 1.2;
+}
+
+.skill-explainer-card-eyebrow--old {
+  color: var(--site-text-muted);
+}
+
+.skill-explainer-card-eyebrow--new {
+  color: var(--site-accent);
+}
+
+.skill-explainer-card-title {
+  margin: 0;
+  font-weight: 700;
+  font-family: var(--site-font-head);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.skill-explainer-card--prompt .skill-explainer-card-title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  color: var(--site-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.skill-explainer-card-title--brand {
+  margin-bottom: 18px;
+  font-size: clamp(22px, 2.8vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--site-text);
+}
+
+.skill-explainer-brand-logo {
+  font-family: var(--site-font-head);
+}
+
+.skill-explainer-brand-suffix {
+  font-weight: 600;
+  color: var(--site-accent);
+  font-size: 0.82em;
+  letter-spacing: -0.01em;
+  margin-left: 0.14em;
+  white-space: nowrap;
+}
+
+.skill-explainer-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.skill-explainer-card--skill .skill-explainer-list {
+  gap: 11px;
+}
+
+.skill-explainer-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--site-font-body);
+  line-height: 1.45;
+  transition:
+    transform var(--site-duration-sm) var(--site-ease),
+    opacity var(--site-duration-sm) var(--site-ease);
+}
+
+.skill-explainer-card--prompt .skill-explainer-list-item {
+  font-size: 12px;
+  color: color-mix(in srgb, var(--site-text-muted) 90%, var(--site-text));
+}
+
+.skill-explainer-card--skill .skill-explainer-list-item {
+  font-size: 14px;
+  color: var(--site-text);
+}
+
+.skill-explainer-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--site-radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    transform var(--site-duration-sm) var(--site-ease),
+    background-color var(--site-duration-sm) var(--site-ease);
+}
+
+.skill-explainer-icon--con {
+  color: color-mix(in srgb, var(--site-text-muted) 80%, #888);
+  background-color: color-mix(in srgb, var(--site-text-muted) 12%, transparent);
+}
+
+.skill-explainer-icon--pro {
+  color: var(--site-accent-fg);
+  background-color: var(--site-accent);
+  font-size: 10px;
+}
+
+.skill-explainer-score {
+  margin: 20px 0 0;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--site-accent) 30%, transparent);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.skill-explainer-score-value {
+  font-size: clamp(36px, 4.5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--site-accent);
+  font-family: var(--site-font-head);
+  display: inline-block;
+  transition: transform var(--site-duration-md) var(--site-ease);
+}
+
+.skill-explainer-score-label {
+  font-size: 14px;
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}
+
+.skill-explainer-card-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: auto;
+  padding-top: 16px;
+  border-radius: var(--site-radius-md);
+  transition:
+    transform var(--site-duration-md) var(--site-ease),
+    opacity var(--site-duration-md) var(--site-ease),
+    filter var(--site-duration-md) var(--site-ease);
+}
+
+.skill-explainer-card-image--prompt {
+  opacity: 0.85;
+  filter: saturate(0.35) contrast(0.95);
+}
+
+.skill-explainer-card-image--skill {
+  opacity: 0.9;
+}
+
+.skill-explainer-diagram {
+  margin-top: 16px;
+  padding: 14px 12px;
+  border-radius: var(--site-radius-md);
+  background-color: color-mix(in srgb, var(--site-text-muted) 4%, var(--site-bg));
+  border: 1px solid color-mix(in srgb, var(--site-text-muted) 12%, transparent);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  transition:
+    transform var(--site-duration-md) var(--site-ease),
+    opacity var(--site-duration-md) var(--site-ease);
+}
+
+@media (hover: hover) {
+  .skill-explainer-card--prompt:hover {
+    opacity: 1;
+    filter: brightness(1.03);
+    border-color: color-mix(in srgb, var(--site-text-muted) 28%, transparent);
+    transform: rotateY(5deg) rotate(0.5deg) translateY(-6px) scale(1.02);
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--site-text-muted) 14%, transparent);
+  }
+
+  .skill-explainer-card--skill:hover {
+    transform: rotateY(-5deg) rotate(-0.5deg) translateY(-8px) scale(1.03);
+    border-color: color-mix(in srgb, var(--site-accent) 55%, transparent);
+    box-shadow:
+      var(--site-shadow-lg),
+      0 0 0 1px color-mix(in srgb, var(--site-accent) 25%, transparent),
+      0 12px 40px color-mix(in srgb, var(--site-accent) 22%, transparent);
+    transition-delay: 0ms;
+  }
+
+  .skill-explainer-grid:has(.skill-explainer-card--prompt:hover) .skill-explainer-card--skill {
+    opacity: 0.78;
+    transform: rotateY(-11deg) rotate(-2deg) scale(0.98);
+    filter: saturate(0.85);
+  }
+
+  .skill-explainer-grid:has(.skill-explainer-card--skill:hover) .skill-explainer-card--prompt {
+    opacity: 0.72;
+    transform: rotateY(13deg) rotate(2deg) scale(0.98);
+    filter: saturate(0.7);
+  }
+
+  .skill-explainer-card--prompt:hover .skill-explainer-list-item {
+    transform: translateX(-3px);
+  }
+
+  .skill-explainer-card--prompt:hover .skill-explainer-list-item:nth-child(1) { transition-delay: 0ms; }
+  .skill-explainer-card--prompt:hover .skill-explainer-list-item:nth-child(2) { transition-delay: 30ms; }
+  .skill-explainer-card--prompt:hover .skill-explainer-list-item:nth-child(3) { transition-delay: 60ms; }
+  .skill-explainer-card--prompt:hover .skill-explainer-list-item:nth-child(4) { transition-delay: 90ms; }
+  .skill-explainer-card--prompt:hover .skill-explainer-list-item:nth-child(5) { transition-delay: 120ms; }
+
+  .skill-explainer-card--skill:hover .skill-explainer-list-item {
+    transform: translateX(4px);
+    transition-delay: 0ms;
+  }
+
+  .skill-explainer-card--skill:hover .skill-explainer-icon--pro {
+    transform: scale(1.12);
+    transition-delay: 0ms;
+  }
+
+  .skill-explainer-card--skill:hover .skill-explainer-score-value {
+    transform: scale(1.06);
+    transition-delay: 0ms;
+  }
+
+  .skill-explainer-card--skill:hover .skill-explainer-card-image--skill,
+  .skill-explainer-card--skill:hover .skill-explainer-diagram {
+    transition-delay: 0ms;
+  }
+
+  .skill-explainer-card--prompt:hover .skill-explainer-card-image--prompt {
+    opacity: 0.95;
+    filter: saturate(0.5) contrast(1);
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  .skill-explainer-card--skill:hover .skill-explainer-card-image--skill {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  .skill-explainer-card--skill:hover .skill-explainer-diagram {
+    transform: translateY(-3px) scale(1.01);
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-explainer {
+    padding: 56px 0;
+  }
+
+  .skill-explainer-title {
+    margin-bottom: 32px;
+    text-align: left;
+  }
+
+  .skill-explainer-stage {
+    perspective: none;
+  }
+
+  .skill-explainer-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .skill-explainer-card--prompt {
+    transform: translateY(40px) scale(0.96);
+  }
+
+  .skill-explainer-card--skill {
+    transform: translateY(40px) scale(0.96);
+    padding: 24px;
+  }
+
+  .skill-explainer--visible .skill-explainer-card--prompt,
+  .skill-explainer--visible .skill-explainer-card--skill {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-explainer-title,
+  .skill-explainer-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .skill-explainer-card--prompt {
+    opacity: 0.9;
+  }
+}

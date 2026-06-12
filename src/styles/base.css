@@ -1,0 +1,149 @@
+/* ============================================================
+   BASE CSS — Site Token Contract
+   All components use only these CSS vars (never hardcoded values)
+   ============================================================ */
+
+@font-face {
+  font-family: 'Mona Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/mona-sans:vf@latest/latin-wght-normal.woff2') format('woff2-variations');
+}
+
+:root {
+  /* ── BACKGROUNDS — getDRIP brand default (light editorial) ─ */
+  --site-bg:          #FAFAF8;
+  --site-surface:     #FFFFFF;
+  --site-surface-2:   #F3F2EF;
+  --site-section-bg:  #F3F2EF;
+
+  /* ── TEXT ────────────────────────────────────────────────── */
+  --site-text:        #111111;
+  --site-text-muted:  #5C5C5C;
+  --site-text-accent: #111111;
+
+  /* ── HERO ────────────────────────────────────────────────── */
+  --site-hero-bg:     #FFFFFF;
+  --site-hero-text:   #111111;
+  --site-hero-shape-1: #1a2b4a;
+  --site-hero-shape-2: #243656;
+  --site-hero-shape-3: #3d4f6f;
+  --site-hero-shape-4: #1a2b4a;
+
+  /* ── SKILLS SECTION ──────────────────────────────────────── */
+  --site-skills-bg:   #FAFAF8;
+  --site-skills-title: #111111;
+
+  /* ── ACCENT ──────────────────────────────────────────────── */
+  --site-accent:      #1a2b4a;
+  --site-accent-2:    #243656;
+  --site-accent-fg:   #ffffff;
+
+  /* ── BORDERS ─────────────────────────────────────────────── */
+  --site-border:         rgba(0, 0, 0, 0.08);
+  --site-border-strong:  rgba(26, 43, 74, 0.22);
+
+  /* ── SHADOWS ──────────────────────────────────────────────── */
+  --site-shadow-sm:   0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --site-shadow-md:   0 2px 8px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.08);
+  --site-shadow-lg:   0 4px 16px rgba(0, 0, 0, 0.08), 0 24px 48px rgba(0, 0, 0, 0.1);
+  --site-shadow-glow: 0 0 0 1px rgba(26, 43, 74, 0.15), 0 4px 20px rgba(26, 43, 74, 0.12);
+
+  /* ── RADIUS ──────────────────────────────────────────────── */
+  --site-radius-sm:   4px;
+  --site-radius-md:   6px;
+  --site-radius-lg:   10px;
+  --site-radius-full: 9999px;
+
+  /* ── TYPOGRAPHY ──────────────────────────────────────────── */
+  --site-font-head:           "DM Sans", system-ui, sans-serif;
+  --site-font-section-title:  "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --site-font-body:           "DM Sans", system-ui, sans-serif;
+  --site-font-mono:   "JetBrains Mono", monospace;
+  --site-head-weight: 600;
+  --site-hero-headline-weight: 600;
+
+  /* ── MOTION ──────────────────────────────────────────────── */
+  --site-ease:        cubic-bezier(0.16, 1, 0.3, 1); /* expo-out */
+  --site-duration-sm: 200ms;  /* Hover, button states */
+  --site-duration-md: 300ms;  /* Card hover, gradient border */
+  --site-duration-lg: 600ms;  /* Entrance animations */
+}
+
+/* The root transition — makes ALL var changes animate */
+:root {
+  transition:
+    background-color var(--site-duration-md) var(--site-ease),
+    color var(--site-duration-md) var(--site-ease);
+}
+
+/* Apply CSS vars to body */
+body {
+  background-color: var(--site-bg);
+  color: var(--site-text);
+  font-family: var(--site-font-body);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Hand-drawn skill: dot-grid paper texture (mandatory for this skill) */
+html[data-skill="hand-drawn"] body {
+  background-image: radial-gradient(#e5e0d8 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Art Deco skill: diagonal crosshatch gold texture (mandatory for this skill) */
+html[data-skill="art-deco"] body {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(212,175,55,0.04) 0px,
+      rgba(212,175,55,0.04) 1px,
+      transparent 1px,
+      transparent 24px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(212,175,55,0.04) 0px,
+      rgba(212,175,55,0.04) 1px,
+      transparent 1px,
+      transparent 24px
+    );
+}
+
+html {
+  background-color: var(--site-bg);
+  scroll-behavior: smooth;
+}
+
+/* Shared container class */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Clay Premium: blob keyframes (used when clay-premium theme is active) ── */
+@keyframes clay-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-20px) rotate(2deg); }
+}
+@keyframes clay-float-delayed {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-15px) rotate(-2deg); }
+}
+@keyframes clay-float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-30px) rotate(5deg); }
+}
+
+.animate-clay-float         { animation: clay-float 8s ease-in-out infinite; }
+.animate-clay-float-delayed { animation: clay-float-delayed 10s ease-in-out infinite; }
+.animate-clay-float-slow    { animation: clay-float-slow 12s ease-in-out infinite; }
+
+.clay-delay-1 { animation-delay: 1s; }
+.clay-delay-2 { animation-delay: 2s; }
+.clay-delay-3 { animation-delay: 3s; }
+.clay-delay-4 { animation-delay: 4s; }

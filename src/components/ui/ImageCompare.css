@@ -1,0 +1,109 @@
+.image-compare {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--site-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--site-border);
+  box-shadow: var(--site-shadow-md);
+  background-color: var(--site-surface);
+  touch-action: none;
+  user-select: none;
+  cursor: ew-resize;
+}
+
+.image-compare--dragging {
+  cursor: grabbing;
+}
+
+.image-compare-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.image-compare-layer--before {
+  z-index: 2;
+}
+
+.image-compare-layer--after {
+  z-index: 1;
+}
+
+.image-compare-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.image-compare-badge {
+  position: absolute;
+  top: 14px;
+  padding: 6px 10px;
+  border-radius: var(--site-radius-sm, 6px);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--site-font-body);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+.image-compare-badge--before {
+  left: 14px;
+}
+
+.image-compare-badge--after {
+  right: 14px;
+}
+
+.image-compare-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.image-compare-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.image-compare-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow: var(--site-shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-compare-handle-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--site-text-muted);
+  flex-shrink: 0;
+}
+
+.image-compare:focus-visible {
+  outline: 2px solid var(--site-accent);
+  outline-offset: 2px;
+}

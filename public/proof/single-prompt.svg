@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" fill="none" role="img" aria-label="Single design prompt in a chat">
+  <rect width="320" height="140" rx="12" fill="#E8EAED"/>
+  <rect x="16" y="16" width="288" height="108" rx="10" fill="#F4F5F7" stroke="#C5C9D0" stroke-width="1.5"/>
+  <rect x="32" y="32" width="120" height="8" rx="4" fill="#B8BEC8"/>
+  <rect x="32" y="50" width="220" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="32" y="64" width="196" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="32" y="78" width="168" height="6" rx="3" fill="#D1D5DB"/>
+  <rect x="32" y="98" width="88" height="18" rx="6" fill="#C5C9D0"/>
+  <text x="76" y="111" text-anchor="middle" fill="#8A8F98" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Send</text>
+</svg>

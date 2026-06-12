@@ -1,0 +1,160 @@
+.skill-workflow-diagram {
+  display: block;
+  width: 100%;
+  min-width:200px;
+  height: auto;
+  color: color-mix(in srgb, var(--site-accent) 50%, var(--site-text-muted));
+}
+
+.skill-workflow-diagram__node {
+  fill: color-mix(in srgb, var(--site-text-muted) 6%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-text-muted) 22%, var(--site-border));
+  stroke-width: 1.25;
+}
+
+.skill-workflow-diagram__node--agent {
+  fill: color-mix(in srgb, var(--site-accent) 12%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-accent) 38%, var(--site-border));
+}
+
+.skill-workflow-diagram__node--external {
+  fill: color-mix(in srgb, var(--site-accent) 10%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-accent) 32%, var(--site-border));
+}
+
+.skill-workflow-diagram__label--command {
+  font-size: 9px;
+}
+
+.skill-workflow-diagram__node--project {
+  fill: color-mix(in srgb, var(--site-accent) 10%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-accent) 32%, var(--site-border));
+}
+
+.skill-workflow-diagram__label--project {
+  font-size: 10px;
+}
+
+.skill-workflow-diagram__website {
+  fill: color-mix(in srgb, var(--site-text-muted) 5%, var(--site-bg));
+  stroke: color-mix(in srgb, var(--site-text-muted) 16%, var(--site-border));
+  stroke-width: 1;
+}
+
+.skill-workflow-diagram__website-bar {
+  fill: color-mix(in srgb, var(--site-text-muted) 10%, var(--site-surface));
+}
+
+.skill-workflow-diagram__website-dot {
+  fill: color-mix(in srgb, var(--site-text-muted) 28%, transparent);
+}
+
+.skill-workflow-diagram__website-hero {
+  fill: color-mix(in srgb, var(--site-accent) 22%, var(--site-surface));
+}
+
+.skill-workflow-diagram__website-line {
+  fill: color-mix(in srgb, var(--site-text-muted) 14%, var(--site-border));
+}
+
+.skill-workflow-diagram__repo {
+  fill: color-mix(in srgb, var(--site-text-muted) 4%, var(--site-bg));
+  stroke: color-mix(in srgb, var(--site-text-muted) 18%, var(--site-border));
+  stroke-width: 1.5;
+}
+
+.skill-workflow-diagram__file {
+  fill: color-mix(in srgb, var(--site-text-muted) 5%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-text-muted) 14%, transparent);
+  stroke-width: 1;
+}
+
+.skill-workflow-diagram__file--entry {
+  fill: color-mix(in srgb, var(--site-accent) 16%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-accent) 42%, transparent);
+  stroke-width: 1.25;
+}
+
+.skill-workflow-diagram__file--manifest {
+  fill: color-mix(in srgb, var(--site-accent) 8%, var(--site-surface));
+  stroke: color-mix(in srgb, var(--site-accent) 28%, transparent);
+  stroke-width: 1.1;
+}
+
+.skill-workflow-diagram__label {
+  fill: var(--site-text);
+  font-family: var(--site-font-body);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.skill-workflow-diagram__label--repo {
+  fill: var(--site-text-muted);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.skill-workflow-diagram__label--file {
+  fill: var(--site-text);
+  font-family: ui-monospace, 'Cascadia Code', 'SF Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.skill-workflow-diagram__label--pill {
+  fill: var(--site-text-muted);
+  font-family: var(--site-font-body);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.skill-workflow-diagram__arrow {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  marker-end: url(#skill-diagram-arrow);
+}
+
+.skill-workflow-diagram__arrow--bidirectional {
+  marker-start: url(#skill-diagram-arrow-start);
+}
+
+.skill-workflow-diagram__pill {
+  fill: var(--site-bg);
+  stroke: color-mix(in srgb, var(--site-text-muted) 18%, transparent);
+  stroke-width: 0.9;
+}
+
+.skill-workflow-diagram__group {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.45s var(--site-ease),
+    transform 0.45s var(--site-ease);
+}
+
+.skill-explainer--visible .skill-workflow-diagram__group {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-explainer--visible .skill-workflow-diagram__group--d1 { transition-delay: 0ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d2 { transition-delay: 50ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d3 { transition-delay: 100ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d4 { transition-delay: 150ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d5 { transition-delay: 200ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d6 { transition-delay: 250ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d7 { transition-delay: 300ms; }
+.skill-explainer--visible .skill-workflow-diagram__group--d8 { transition-delay: 350ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-workflow-diagram__group {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

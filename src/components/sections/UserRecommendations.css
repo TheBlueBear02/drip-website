@@ -1,0 +1,119 @@
+.user-recommendations {
+  padding: 88px 0;
+  background-color: var(--site-section-bg);
+  border-top: 1px solid var(--site-border);
+  border-bottom: 1px solid var(--site-border);
+}
+
+.user-recommendations-title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: var(--site-head-weight, 600);
+  text-align: center;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+  color: var(--site-text);
+  font-family: var(--site-font-section-title, var(--site-font-head));
+}
+
+.user-recommendations-subtitle {
+  margin: 0 auto 48px;
+  max-width: 42ch;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}
+
+.user-recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.user-recommendation-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  background-color: var(--site-surface);
+  border: 1px solid var(--site-border);
+  border-radius: var(--site-radius-md, 12px);
+  box-shadow: var(--site-shadow-sm);
+}
+
+.user-recommendation-quote {
+  margin: 0;
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--site-text);
+  font-family: var(--site-font-body);
+}
+
+.user-recommendation-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-recommendation-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--site-radius-full, 9999px);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-recommendation-avatar--initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--site-surface-2);
+  border: 1px solid var(--site-border);
+  color: var(--site-accent);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--site-font-body);
+}
+
+.user-recommendation-cite {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-style: normal;
+}
+
+.user-recommendation-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--site-text);
+  font-family: var(--site-font-body);
+}
+
+.user-recommendation-meta {
+  font-size: 13px;
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}
+
+.user-recommendations-empty {
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}
+
+@media (max-width: 960px) {
+  .user-recommendations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .user-recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+}

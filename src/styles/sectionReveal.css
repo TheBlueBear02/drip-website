@@ -1,0 +1,25 @@
+.site-reveal-section {
+  --site-reveal-duration: 1.2s;
+}
+
+.site-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--site-reveal-duration) var(--site-ease),
+    transform var(--site-reveal-duration) var(--site-ease);
+  transition-delay: var(--site-reveal-delay, 0ms);
+}
+
+.site-reveal-section.is-visible .site-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

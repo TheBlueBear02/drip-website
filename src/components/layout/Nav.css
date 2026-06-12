@@ -1,0 +1,169 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.nav {
+  background-color: var(--site-bg);
+  border-bottom: 1px solid var(--site-border);
+}
+
+.nav-content {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: color var(--site-duration-sm) var(--site-ease);
+}
+
+.nav-logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--site-text);
+  letter-spacing: -0.5px;
+  font-family: var(--site-font-head);
+  transition: color var(--site-duration-sm) var(--site-ease);
+}
+
+.nav-logo:hover .nav-logo-text {
+  color: var(--site-accent);
+}
+
+.nav-logo-beta {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 2px 5px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: var(--site-font-body);
+  background-color: var(--site-accent);
+  color: var(--site-accent-fg);
+  border-radius: var(--site-radius-sm);
+  border: 1px solid var(--site-border-strong);
+  box-shadow: var(--site-shadow-sm);
+  transition: background-color var(--site-duration-sm) var(--site-ease),
+    border-color var(--site-duration-sm) var(--site-ease),
+    box-shadow var(--site-duration-sm) var(--site-ease);
+}
+
+.nav-logo:hover .nav-logo-beta {
+  background-color: var(--site-accent-2);
+  border-color: var(--site-accent);
+  box-shadow: var(--site-shadow-glow);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.nav-link {
+  color: var(--site-text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  font-family: var(--site-font-body);
+  transition: color var(--site-duration-sm) var(--site-ease);
+}
+
+.nav-link:hover {
+  color: var(--site-text);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-self: end;
+}
+
+.nav-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--site-radius-md);
+  border: 1px solid var(--site-border);
+  color: var(--site-text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--site-font-body);
+  transition: color var(--site-duration-sm) var(--site-ease),
+    border-color var(--site-duration-sm) var(--site-ease),
+    background-color var(--site-duration-sm) var(--site-ease);
+}
+
+.nav-stars:hover {
+  color: var(--site-text);
+  border-color: var(--site-border-strong);
+  background-color: var(--site-surface-2);
+}
+
+/* Linear Modern only: make GitHub pill border more visible */
+html[data-skill="linear-modern"] .nav-stars {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.nav-stars-icon {
+  color: var(--site-accent);
+  font-size: 16px;
+}
+
+.nav-cta {
+  background-color: var(--site-accent);
+  color: var(--site-accent-fg);
+  padding: 10px 20px;
+  border-radius: var(--site-radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  font-family: var(--site-font-body);
+  transition: background-color var(--site-duration-sm) var(--site-ease);
+}
+
+.nav-cta:hover {
+  background-color: var(--site-accent-2);
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    grid-template-columns: 1fr auto;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .nav-right {
+    gap: 12px;
+  }
+  
+  .nav-stars {
+    display: none;
+  }
+  
+  .nav-cta {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-logo {
+    font-size: 21px;
+  }
+}

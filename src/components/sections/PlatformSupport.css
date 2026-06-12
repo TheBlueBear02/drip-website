@@ -1,0 +1,95 @@
+.platform-support {
+  padding: 64px 0 100px;
+  background-color: var(--site-bg);
+}
+
+.platform-support-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+  color: var(--site-text);
+  font-family: var(--site-font-section-title, var(--site-font-head));
+}
+
+.platform-support-subtitle {
+  text-align: center;
+  color: var(--site-text-muted);
+  font-size: 18px;
+  margin-bottom: 64px;
+  font-family: var(--site-font-body);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.platform-support-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: 40px 0;
+}
+
+.platform-support-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 200px;
+  height: 80px;
+  transition: transform var(--site-duration-md) var(--site-ease);
+}
+
+.platform-support-item:hover {
+  transform: scale(1.08);
+}
+
+.platform-support-logo {
+  width: 200px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.platform-support-logo {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+}
+
+/* Light-bg section styling (when skill has light/colorful category) */
+.platform-support--light {
+  background-color: var(--platform-support-light-bg, #f5f5f5);
+}
+
+.platform-support--light .platform-support-title,
+.platform-support--light .platform-support-subtitle {
+  color: var(--platform-support-light-text, #1a1a1a);
+}
+
+.platform-support--light .platform-support-subtitle {
+  color: var(--platform-support-light-text-muted, #555);
+}
+
+@media (max-width: 768px) {
+  .platform-support {
+    padding: 56px 0 80px;
+  }
+  
+  .platform-support-strip {
+    gap: 24px;
+    padding: 32px 0;
+  }
+  
+  .platform-support-item {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .platform-support-logo {
+    width: 100px;
+    height: auto;
+  }
+}
