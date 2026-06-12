@@ -36,10 +36,13 @@ function SkillSwitcherStrip() {
     setActiveSkill,
     activeHeroType,
     hasSelectedProjectType,
+    navbarSwitcherStep,
+    setNavbarSwitcherStep,
+    heroProjectTypePick,
     selectProjectType,
   } = useSkillContext();
   const isCollapsed = useScrollCollapse();
-  const [switcherStep, setSwitcherStep] = useState('project-type');
+  const switcherStep = navbarSwitcherStep;
   const [typeMenuOpen, setTypeMenuOpen] = useState(false);
   const [anchorEntering, setAnchorEntering] = useState(false);
   const [stylesEntering, setStylesEntering] = useState(false);
@@ -48,6 +51,7 @@ function SkillSwitcherStrip() {
   const typeMenuRef = useRef(null);
   const skipNextTypeAnimRef = useRef(false);
   const prevActiveHeroTypeRef = useRef(activeHeroType);
+  const prevHeroProjectTypePickRef = useRef(heroProjectTypePick);
 
   const selectedType = heroTypeList.find((t) => t.id === activeHeroType) ?? heroTypeList[0];
   const isBrandActive = activeSkill === null || activeSkill === BRAND_SKILL_ID;
@@ -119,19 +123,25 @@ function SkillSwitcherStrip() {
     });
   };
 
-  const prevHasSelectedProjectType = useRef(hasSelectedProjectType);
   useEffect(() => {
-    if (
-      hasSelectedProjectType &&
-      !prevHasSelectedProjectType.current &&
-      switcherStep === 'project-type'
-    ) {
-      setSwitcherStep('styles');
-      setAnchorEntering(true);
-      triggerStylesEnterAnimation();
+    if (!hasSelectedProjectType) {
+      setTypeMenuOpen(false);
     }
-    prevHasSelectedProjectType.current = hasSelectedProjectType;
-  }, [hasSelectedProjectType, switcherStep]);
+  }, [hasSelectedProjectType]);
+
+  useEffect(() => {
+    if (heroProjectTypePick === prevHeroProjectTypePickRef.current) return;
+
+    prevHeroProjectTypePickRef.current = heroProjectTypePick;
+    skipNextTypeAnimRef.current = true;
+
+    if (navbarSwitcherStep === 'project-type') {
+      setNavbarSwitcherStep('styles');
+      setAnchorEntering(true);
+    }
+
+    triggerStylesEnterAnimation();
+  }, [heroProjectTypePick, navbarSwitcherStep, setNavbarSwitcherStep]);
 
   useEffect(() => {
     if (activeHeroType === prevActiveHeroTypeRef.current) return;
@@ -165,7 +175,7 @@ function SkillSwitcherStrip() {
     skipNextTypeAnimRef.current = true;
     selectProjectType(typeId);
     if (switcherStep === 'project-type') {
-      setSwitcherStep('styles');
+      setNavbarSwitcherStep('styles');
       setAnchorEntering(true);
       triggerStylesEnterAnimation();
     } else {
@@ -192,16 +202,26 @@ function SkillSwitcherStrip() {
           <div className="skill-switcher-types-row">
             <span className="skill-switcher-building-label">I&apos;m building:</span>
             <div className="skill-switcher-types">
-              {heroTypeList.map((type) => (
-                <button
-                  key={type.id}
-                  type="button"
-                  className="skill-chip skill-chip--project-type"
-                  onClick={() => handleTypeSelect(type.id)}
-                >
-                  <span className="skill-chip-name">{type.label}</span>
-                </button>
-              ))}
+              {heroTypeList.map((type) => {
+                const isActive = hasSelectedProjectType && type.id === activeHeroType;
+
+                return (
+                  <button
+                    key={type.id}
+                    type="button"
+                    className={[
+                      'skill-chip skill-chip--project-type',
+                      isActive ? 'skill-chip-active' : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')}
+                    aria-pressed={isActive}
+                    onClick={() => handleTypeSelect(type.id)}
+                  >
+                    <span className="skill-chip-name">{type.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         ) : (

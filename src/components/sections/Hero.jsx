@@ -16,7 +16,7 @@ function Hero() {
     previewSkill,
     activeHeroType,
     hasSelectedProjectType,
-    selectProjectType,
+    selectProjectTypeFromHero,
   } = useSkillContext();
   const resolvedSkillId = resolveSkillId(previewSkill, activeSkill);
   const isBrand = isBrandTheme(resolvedSkillId);
@@ -49,7 +49,7 @@ function Hero() {
         <HeroProjectTypes
           activeHeroType={activeHeroType}
           hasSelected={hasSelectedProjectType}
-          onSelect={selectProjectType}
+          onSelect={selectProjectTypeFromHero}
         />
         <a href="#skills" className="hero-browse-link" onClick={handleBrowseClick}>
           Browse all designs →

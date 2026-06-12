@@ -287,14 +287,14 @@ SkillSwitcherStrip
   └── Step 2 (styles): type anchor (accent outline + chevron, transparent background, `--site-radius-md` corners); dropdown portaled to `document.body` with fixed positioning so it renders over the hero (not clipped by `site-header` / strip `overflow`); lists all 4 types to switch without leaving styles view (`selectProjectType` only); changing type scrolls smoothly to `#home` hero
   └── Style chips (step 2 only): first chip house icon (resets to brand default; siteOnly) + installable library skills from `skillList` in `src/skills/index.js`: clay-premium → linear-modern → neo-brutalism → minimalist-monochrome → playful-geometric → art-deco → hand-drawn
   └── All styles shown for every project type (no per-type filtering yet)
-  └── Step 1 → 2 transition: selected type slides to left anchor (`skill-type-slide-in`); also triggered when user picks a type in the hero (`hasSelectedProjectType`); style-chip stagger (`skill-switcher-scroll--enter`) replays when project type changes from hero while on step 2 (watches `activeHeroType`); `prefers-reduced-motion` skips animation
+  └── Step 1 → 2 transition: hero chips call `selectProjectTypeFromHero` → one frame on step 1 (active chip highlighted) then `SkillSwitcherStrip` advances to step 2 with anchor slide-in + style-chip stagger; navbar step 1 chips use the same animation via `handleTypeSelect`; already on step 2, hero type change replays chip stagger only; `?project=` URL loads on step 2 without replaying hero animation
   └── Scroll: collapses upward when scrolling down (`useScrollCollapse`); drops back in with slight bounce when scrolling up or near top; `html.skill-strip-collapsed` tightens anchor scroll-margin
 
 Hero
   └── Brand default (getdrip-brand): split layout — copy left, HeroVideo right
       ├── Eyebrow: "Design systems for AI-built apps"
       ├── Headline: "Your AI App Works / Now Give It Character" — `HeroCharacterWord` cycles library skills every 7s (`skillList` order): accent color + heading font from each theme; slide-up enter animation on change; preloads skill font URLs; fixed-width slot (max measured width) + `white-space: nowrap` on second line to prevent wrap on font change
-      ├── `"I'm building:"` label + `HeroProjectTypes` — same 4 chips as navbar step 1; click → `selectProjectType(id)` syncs `activeHeroType`, advances navbar to step 2, highlights active chip in hero
+      ├── `"I'm building:"` label + `HeroProjectTypes` — same 4 chips as navbar step 1; click → `selectProjectTypeFromHero(id)` syncs type, highlights chip, then animates navbar to step 2 (designs)
       └── HeroVideo: `VITE_DEMO_VIDEO_URL` in `.env` (not `.env.example`); YouTube/Vimeo embed or file under `public/` (path must match filename exactly, e.g. `proof/getDrip-example-video.mp4`); local paths resolved with `import.meta.env.BASE_URL`; wrong path may return SPA HTML (200) instead of 404 — video shows blank; `onError` shows load hint; restart dev server after env change; poster/thumbnail uses `public/proof/after.png` (same as Before/After “with skill” panel); dark scrim + centered circular play button overlay until first play (embeds lazy-load on click with autoplay); overlay returns when direct video ends
   └── Library skill active: project-type hero archetypes via `SkillHeroShell` + `src/data/heroTypes.js`
       ├── Two axes: **skill** (theme tokens + `hero--{skill}` modifiers) × **hero type** (layout + mock UI)
@@ -523,11 +523,13 @@ Content area
 ```jsx
 // Two-step switcher: project type → styles
 // Step 1: heroTypeList chips (Dashboard, Landing page, SaaS site, Portfolio)
-//   - onClick → setActiveHeroType(id), switcherStep = 'styles'
+//   - onClick → selectProjectType(id) + setNavbarSwitcherStep('styles')
 // Step 2: left type anchor (dropdown to change activeHeroType) + scrollable style chips
 //   - default chip → setActiveSkill(null)
 //   - library chips → setActiveSkill(id); active chip uses --site-accent text color
-// Local state: switcherStep ('project-type' | 'styles'), typeMenuOpen, anchorEntering (type anchor), stylesEntering (style chip stagger)
+// Hero chips → selectProjectTypeFromHero(id) → step 1 flash + animated advance to step 2
+// navbarSwitcherStep: 'project-type' | 'styles' (context; URL ?project= loads 'styles')
+// Local state: typeMenuOpen, anchorEntering (type anchor), stylesEntering (style chip stagger)
 // Collapses on scroll down via useScrollCollapse; z-index: 40
 ```
 

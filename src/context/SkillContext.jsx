@@ -16,21 +16,33 @@ export function SkillProvider({ children }) {
   const [previewSkill, setPreviewSkill] = useState(null); // Temporary hover state
   const [activeHeroType, setActiveHeroType] = useState(initialHeroType.type);
   const [hasSelectedProjectType, setHasSelectedProjectType] = useState(initialHeroType.hasSelected);
+  const [navbarSwitcherStep, setNavbarSwitcherStep] = useState(
+    () => (initialHeroType.hasSelected ? 'styles' : 'project-type'),
+  );
+  const [heroProjectTypePick, setHeroProjectTypePick] = useState(0);
 
   const selectProjectType = (typeId) => {
     setActiveHeroType(typeId);
     setHasSelectedProjectType(true);
   };
 
+  const selectProjectTypeFromHero = (typeId) => {
+    setActiveHeroType(typeId);
+    setHasSelectedProjectType(true);
+    setHeroProjectTypePick((count) => count + 1);
+  };
+
   const applyHeroTypeFromUrl = useCallback((typeId) => {
     if (typeId) {
       setActiveHeroType((current) => (current === typeId ? current : typeId));
       setHasSelectedProjectType(true);
+      setNavbarSwitcherStep('styles');
       return;
     }
 
     setActiveHeroType((current) => (current === DEFAULT_HERO_TYPE ? current : DEFAULT_HERO_TYPE));
     setHasSelectedProjectType(false);
+    setNavbarSwitcherStep('project-type');
   }, []);
 
   // The rendered skill = previewSkill ?? activeSkill ?? getdrip-brand (site default)
@@ -43,10 +55,14 @@ export function SkillProvider({ children }) {
         previewSkill,
         activeHeroType,
         hasSelectedProjectType,
+        navbarSwitcherStep,
+        heroProjectTypePick,
         setActiveSkill,
         setPreviewSkill,
         setActiveHeroType,
+        setNavbarSwitcherStep,
         selectProjectType,
+        selectProjectTypeFromHero,
         applyHeroTypeFromUrl,
       }}
     >
