@@ -1,6 +1,6 @@
 .before-after {
   padding: 88px 0;
-  background-color: var(--site-bg);
+  background-color: var(--site-surface);
   --before-after-enter-duration: 1.2s;
   --before-after-image-duration: 1.1s;
   --before-after-shimmer-duration: 2.2s;

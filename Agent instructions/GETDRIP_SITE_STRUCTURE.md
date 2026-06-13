@@ -321,14 +321,17 @@ BeforeAfter
   └── Fallback: MiniPreview generic vs styled (or style preview PNG)
   └── Below the grid: single `ImageCompare` block (`src/components/ui/ImageCompare.jsx`) — before/after screenshots stacked in one frame with a draggable vertical divider (pointer drag + keyboard slider); same proof images and fallbacks as the panels; gated by `SHOW_INTERACTIVE_COMPARE` in `BeforeAfter.jsx` (currently `false`, hidden on site)
 
-HowItWorks          ← heading: "It's Never Been Easier"; asymmetric bento (pick / run / apply)
+HowItWorks          ← heading: "It's Never Been Easier"; interactive 5-step selector (left nav + right detail panel)
   └── Subtitle: "Pick a design system, paste one command, and your agent builds in that world."
-  └── Bento grid (max-width ~980px): left pick card (~220px) + center run card (featured, min ~360px) + right apply card (~220px)
-  └── Step 01 (pick): muted card, skill accent swatches from first 6 `skillList` items (`bgColor`), "Browse designs →" scrolls to `#skills`
-  └── Step 02 (run): accent gradient card, live `CopyCommand` (`npx getdrip add linear-modern` via `FEATURED_SKILL_ID`)
-  └── Step 03 (apply): muted card, inline SVG mini browser (generic wireframe → styled UI with accent)
-  └── Scroll entrance: `useInView` + `site-reveal-section`; title/subtitle use `site-reveal`; cards use custom opacity + 3D tilt (inward on side cards), staggered delays (280ms / 400ms / 520ms); `:has()` hover dims siblings (pattern from LivePreviewCallout)
-  └── Mobile (≤768px): stack pick → run → apply (Step 01–03); no 3D tilt; tablet (≤900px): run spans full width, pick + apply side by side
+  └── Two-column layout (max-width ~980px): left step nav (~240–300px) + right detail panel (featured accent card)
+  └── `activeStep` state (`useState(0)`); step buttons use `aria-pressed`; panel uses `aria-live="polite"` and re-mounts on step change for light fade-in
+  └── Step 01 — Pick Design System: skill accent swatches from first 6 `skillList` items (`bgColor`), "Browse designs →" scrolls to `#skills`
+  └── Step 02 — Copy the Design Command: live `CopyCommand` (`npx getdrip add linear-modern` via `FEATURED_SKILL_ID`)
+  └── Step 03 — Paste the command in Claude/Cursor/Codex: text-only (Cursor, Claude Code, Codex, Lovable, etc.)
+  └── Step 04 — Ask the AI Agent to Apply the Design: inline SVG mini browser (generic wireframe → styled UI with accent)
+  └── Step 05 — Make Your Own Adjustments: text-only (user edits tokens, components, rules)
+  └── Scroll entrance: `useInView` + `site-reveal-section`; title/subtitle + layout block use `site-reveal`
+  └── Mobile (≤900px): single column — nav stacks above panel; buttons remain full-width vertical stack; ≤768px title/subtitle left-aligned
 
 SkillsPreview       ← carousel / gallery of library skills
   └── Scroll entrance on title, cards (staggered), and show-more button

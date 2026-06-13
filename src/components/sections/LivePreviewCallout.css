@@ -1,8 +1,6 @@
 .skill-explainer {
   padding: 72px 0;
   background-color: var(--site-section-bg);
-  border-top: 1px solid var(--site-border);
-  border-bottom: 1px solid var(--site-border);
   overflow: hidden;
 }
 

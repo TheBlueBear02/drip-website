@@ -16,7 +16,7 @@
   --site-bg:          #FAFAF8;
   --site-surface:     #FFFFFF;
   --site-surface-2:   #F3F2EF;
-  --site-section-bg:  #F3F2EF;
+  --site-section-bg:  #FFFFFF;
 
   /* ── TEXT ────────────────────────────────────────────────── */
   --site-text:        #111111;
@@ -32,7 +32,7 @@
   --site-hero-shape-4: #1a2b4a;
 
   /* ── SKILLS SECTION ──────────────────────────────────────── */
-  --site-skills-bg:   #FAFAF8;
+  --site-skills-bg:   #FFFFFF;
   --site-skills-title: #111111;
 
   /* ── ACCENT ──────────────────────────────────────────────── */

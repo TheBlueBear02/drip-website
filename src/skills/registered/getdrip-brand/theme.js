@@ -8,7 +8,7 @@ export const getdripBrandTheme = {
     '--site-bg': '#FAFAF8',
     '--site-surface': '#FFFFFF',
     '--site-surface-2': '#F3F2EF',
-    '--site-section-bg': '#F3F2EF',
+    '--site-section-bg': '#FFFFFF',
 
     '--site-text': '#111111',
     '--site-text-muted': '#5C5C5C',
@@ -21,7 +21,7 @@ export const getdripBrandTheme = {
     '--site-hero-shape-3': '#3d4f6f',
     '--site-hero-shape-4': '#1a2b4a',
 
-    '--site-skills-bg': '#FAFAF8',
+    '--site-skills-bg': '#FFFFFF',
     '--site-skills-title': '#111111',
 
     '--site-accent': '#1a2b4a',

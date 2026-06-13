@@ -42,7 +42,7 @@ function Hero() {
         </span>
       </h1>
       <p className="hero-subheadline">
-        Save time and money by fixing the default AI look of your project in 10 secs and get back to vibe coding.
+        Fix the default AI look of your project in 10 secs and get back to vibe coding.
       </p>
       <div className="hero-cta-group">
         <p className="hero-try-label">I&apos;m building:</p>

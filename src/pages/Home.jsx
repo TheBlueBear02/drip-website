@@ -18,9 +18,9 @@ function Home() {
         <SkillSwitcherStrip />
       </header>
       <Hero />
-      <LivePreviewCallout />
       <BeforeAfter />
       <HowItWorks />
+      <LivePreviewCallout />
       <SkillsPreview />
       <UserRecommendations />
       <PlatformSupport />

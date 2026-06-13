@@ -27,120 +27,96 @@
 .how-it-works-stage {
   display: flex;
   justify-content: center;
-  perspective: 1400px;
 }
 
-.how-it-works-bento {
-  display: grid;
-  grid-template-columns: minmax(0, 220px) minmax(360px, 1fr) minmax(0, 220px);
+.how-it-works-layout {
+  display: flex;
   gap: 24px;
   align-items: stretch;
   max-width: 980px;
   width: 100%;
 }
 
-.how-it-works-card {
+.how-it-works-nav {
+  flex: 0 0 clamp(260px, 28vw, 320px);
   display: flex;
   flex-direction: column;
-  border-radius: var(--site-radius-lg);
-  padding: 22px;
+  gap: 12px;
+}
+
+.how-it-works-panel-slot {
+  flex: 1;
   min-width: 0;
-  opacity: 0;
-  /* Hover only — entrance uses keyframes so reveal delay never affects borders/shadows */
-  transition:
-    transform 0.75s var(--site-ease),
-    box-shadow var(--site-duration-md) var(--site-ease),
-    border-color var(--site-duration-md) var(--site-ease),
-    opacity var(--site-duration-md) var(--site-ease),
-    filter var(--site-duration-md) var(--site-ease);
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
 }
 
-.how-it-works-card--pick,
-.how-it-works-card--apply {
-  background-color: color-mix(in srgb, var(--site-text-muted) 6%, var(--site-bg));
+@media (min-width: 901px) {
+  .how-it-works-panel-slot {
+    flex: 1 1 auto;
+  }
+}
+
+.how-it-works-step-btn {
+  display: block;
+  width: 100%;
+  padding: 18px 20px;
+  border-radius: var(--site-radius-md);
   border: 1px solid color-mix(in srgb, var(--site-text-muted) 18%, transparent);
+  background-color: color-mix(in srgb, var(--site-text-muted) 6%, var(--site-bg));
+  color: var(--site-text);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  font-family: var(--site-font-body);
+  cursor: pointer;
+  transition:
+    border-color var(--site-duration-md) var(--site-ease),
+    background-color var(--site-duration-md) var(--site-ease),
+    color var(--site-duration-md) var(--site-ease),
+    box-shadow var(--site-duration-md) var(--site-ease),
+    transform var(--site-duration-md) var(--site-ease);
 }
 
-.how-it-works-card--pick {
-  transform: rotateY(14deg) rotate(1.5deg) translateY(40px) scale(0.94);
-  transform-origin: right center;
+.how-it-works-step-btn.is-active {
+  border-color: color-mix(in srgb, var(--site-accent) 45%, transparent);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--site-accent) 14%, var(--site-surface)) 0%,
+    color-mix(in srgb, var(--site-accent) 6%, var(--site-bg)) 100%
+  );
+  color: var(--site-text);
+  box-shadow: var(--site-shadow-sm);
 }
 
-.how-it-works-card--apply {
-  transform: rotateY(-14deg) rotate(-1.5deg) translateY(40px) scale(0.94);
-  transform-origin: left center;
-}
-
-.how-it-works-card--run {
-  padding: 26px 28px;
+.how-it-works-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 28px 32px;
+  border-radius: var(--site-radius-lg);
+  border: 1px solid color-mix(in srgb, var(--site-accent) 40%, transparent);
   background: linear-gradient(
     145deg,
     color-mix(in srgb, var(--site-accent) 16%, var(--site-surface)) 0%,
     color-mix(in srgb, var(--site-accent) 8%, var(--site-bg)) 100%
   );
-  border: 1px solid color-mix(in srgb, var(--site-accent) 40%, transparent);
   box-shadow: var(--site-shadow-md);
-  transform: translateY(40px) scale(0.96);
+  animation: how-it-works-panel-in 0.35s var(--site-ease);
 }
 
-@keyframes how-it-works-enter-pick {
+@keyframes how-it-works-panel-in {
   from {
-    opacity: 0;
-    transform: rotateY(14deg) rotate(1.5deg) translateY(40px) scale(0.94);
-  }
-
-  to {
-    opacity: 0.9;
-    transform: rotateY(8deg) rotate(1deg);
-  }
-}
-
-@keyframes how-it-works-enter-run {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.96);
+    opacity: 0.6;
   }
 
   to {
     opacity: 1;
-    transform: none;
   }
-}
-
-@keyframes how-it-works-enter-apply {
-  from {
-    opacity: 0;
-    transform: rotateY(-14deg) rotate(-1.5deg) translateY(40px) scale(0.94);
-  }
-
-  to {
-    opacity: 0.9;
-    transform: rotateY(-8deg) rotate(-1deg);
-  }
-}
-
-@keyframes how-it-works-enter-flat {
-  from {
-    opacity: 0;
-    transform: translateY(32px) scale(0.96);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.site-reveal-section.is-visible .how-it-works-card--pick {
-  animation: how-it-works-enter-pick 0.75s var(--site-ease) 280ms forwards;
-}
-
-.site-reveal-section.is-visible .how-it-works-card--run {
-  animation: how-it-works-enter-run 0.75s var(--site-ease) 400ms forwards;
-}
-
-.site-reveal-section.is-visible .how-it-works-card--apply {
-  animation: how-it-works-enter-apply 0.75s var(--site-ease) 520ms forwards;
 }
 
 .how-it-works-eyebrow {
@@ -157,9 +133,9 @@
   color: var(--site-accent);
 }
 
-.how-it-works-card-title {
-  margin: 0 0 10px;
-  font-size: 18px;
+.how-it-works-panel-title {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 2.2vw, 26px);
   font-weight: var(--site-head-weight, 600);
   letter-spacing: -0.02em;
   line-height: 1.25;
@@ -167,32 +143,30 @@
   font-family: var(--site-font-head);
 }
 
-.how-it-works-card--run .how-it-works-card-title {
-  font-size: clamp(20px, 2.2vw, 24px);
-}
-
-.how-it-works-card-description {
+.how-it-works-panel-description {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--site-text-muted);
+  font-size: 15px;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--site-text-muted) 70%, var(--site-text));
   font-family: var(--site-font-body);
 }
 
-.how-it-works-card--run .how-it-works-card-description {
-  font-size: 15px;
-  color: color-mix(in srgb, var(--site-text-muted) 70%, var(--site-text));
+.how-it-works-panel-visual {
+  margin-top: auto;
+  padding-top: 16px;
+  min-height: 0;
+  flex-shrink: 1;
 }
 
 .how-it-works-visual {
-  margin-top: auto;
-  padding-top: 20px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .how-it-works-visual--command {
   display: flex;
   justify-content: center;
-  padding-top: 24px;
+  padding-top: 8px;
 }
 
 .how-it-works-visual--command .copy-command {
@@ -242,7 +216,9 @@
 }
 
 .how-it-works-visual--apply {
-  padding: 14px 12px;
+  padding: 8px 10px;
+  max-width: 220px;
+  margin: 0 auto;
   border-radius: var(--site-radius-md);
   background-color: color-mix(in srgb, var(--site-text-muted) 4%, var(--site-bg));
   border: 1px solid color-mix(in srgb, var(--site-text-muted) 12%, transparent);
@@ -251,7 +227,10 @@
 .how-it-works-apply-svg {
   display: block;
   width: 100%;
+  max-width: 200px;
+  max-height: 96px;
   height: auto;
+  margin: 0 auto;
 }
 
 .how-it-works-apply-frame {
@@ -306,85 +285,35 @@
 }
 
 @media (hover: hover) {
-  .how-it-works-card--pick:hover {
-    opacity: 1;
-    filter: brightness(1.03);
+  .how-it-works-step-btn:not(.is-active):hover {
     border-color: color-mix(in srgb, var(--site-text-muted) 28%, transparent);
-    transform: rotateY(4deg) rotate(0.5deg) translateY(-6px) scale(1.02);
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--site-text-muted) 14%, transparent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--site-text-muted) 10%, transparent);
   }
 
-  .how-it-works-card--apply:hover {
-    opacity: 1;
-    filter: brightness(1.03);
-    border-color: color-mix(in srgb, var(--site-text-muted) 28%, transparent);
-    transform: rotateY(-4deg) rotate(-0.5deg) translateY(-6px) scale(1.02);
-    box-shadow: 0 10px 28px color-mix(in srgb, var(--site-text-muted) 14%, transparent);
-  }
-
-  .how-it-works-card--run:hover {
-    transform: translateY(-8px) scale(1.02);
-    border-color: color-mix(in srgb, var(--site-accent) 55%, transparent);
-    box-shadow:
-      var(--site-shadow-lg),
-      0 0 0 1px color-mix(in srgb, var(--site-accent) 25%, transparent),
-      0 12px 40px color-mix(in srgb, var(--site-accent) 22%, transparent);
-  }
-
-  .how-it-works-bento:has(.how-it-works-card--run:hover) .how-it-works-card--pick,
-  .how-it-works-bento:has(.how-it-works-card--run:hover) .how-it-works-card--apply {
-    opacity: 0.78;
-    filter: saturate(0.85);
-  }
-
-  .how-it-works-bento:has(.how-it-works-card--pick:hover) .how-it-works-card--run,
-  .how-it-works-bento:has(.how-it-works-card--pick:hover) .how-it-works-card--apply,
-  .how-it-works-bento:has(.how-it-works-card--apply:hover) .how-it-works-card--run,
-  .how-it-works-bento:has(.how-it-works-card--apply:hover) .how-it-works-card--pick {
-    opacity: 0.78;
-    filter: saturate(0.85);
-  }
-
-  .how-it-works-card--pick:hover .how-it-works-swatch {
+  .how-it-works-panel:hover .how-it-works-swatch {
     transform: scale(1.08);
   }
 }
 
 @media (max-width: 900px) {
-  .how-it-works-bento {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'run run'
-      'pick apply';
+  .how-it-works-layout {
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .how-it-works-card--run {
-    grid-area: run;
+  .how-it-works-nav {
+    flex: none;
+    width: 100%;
   }
 
-  .how-it-works-card--pick {
-    grid-area: pick;
+  .how-it-works-panel-slot {
+    overflow: visible;
+    min-height: auto;
   }
 
-  .how-it-works-card--apply {
-    grid-area: apply;
-  }
-
-  .how-it-works-card--pick,
-  .how-it-works-card--apply {
-    transform: translateY(32px) scale(0.96);
-  }
-
-  .site-reveal-section.is-visible .how-it-works-card--pick {
-    animation: how-it-works-enter-flat 0.75s var(--site-ease) 280ms forwards;
-  }
-
-  .site-reveal-section.is-visible .how-it-works-card--run {
-    animation: how-it-works-enter-flat 0.75s var(--site-ease) 400ms forwards;
-  }
-
-  .site-reveal-section.is-visible .how-it-works-card--apply {
-    animation: how-it-works-enter-flat 0.75s var(--site-ease) 520ms forwards;
+  .how-it-works-panel {
+    overflow-y: visible;
   }
 }
 
@@ -403,50 +332,23 @@
     text-align: left;
   }
 
-  .how-it-works-stage {
-    perspective: none;
+  .how-it-works-panel {
+    padding: 22px 20px;
+    min-height: 0;
   }
 
-  .how-it-works-bento {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'pick'
-      'run'
-      'apply';
-    gap: 16px;
-  }
-
-  .how-it-works-card--pick,
-  .how-it-works-card--apply,
-  .how-it-works-card--run {
-    transform: translateY(32px) scale(0.96);
-  }
-
-  .site-reveal-section.is-visible .how-it-works-card--pick {
-    animation: how-it-works-enter-flat 0.75s var(--site-ease) 280ms forwards;
-  }
-
-  .site-reveal-section.is-visible .how-it-works-card--run {
-    animation: how-it-works-enter-flat 0.75s var(--site-ease) 400ms forwards;
-  }
-
-  .site-reveal-section.is-visible .how-it-works-card--apply {
-    animation: how-it-works-enter-flat 0.75s var(--site-ease) 520ms forwards;
+  .how-it-works-step-btn {
+    font-size: 14px;
+    padding: 16px 18px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .site-reveal-section.is-visible .how-it-works-card--pick,
-  .site-reveal-section.is-visible .how-it-works-card--run,
-  .site-reveal-section.is-visible .how-it-works-card--apply {
+  .how-it-works-panel {
     animation: none;
-    opacity: 1;
-    transform: none;
   }
 
-  .how-it-works-card--pick,
-  .how-it-works-card--apply,
-  .how-it-works-card--run {
+  .how-it-works-step-btn {
     transition: none;
   }
 }

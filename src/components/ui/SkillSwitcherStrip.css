@@ -1,6 +1,6 @@
 .skill-switcher-strip {
   z-index: 40;
-  background-color: var(--site-surface-2);
+  background-color: var(--site-surface);
   border-top: 1px solid var(--site-border);
   border-bottom: 1px solid var(--site-border);
   padding: 10px 0 8px;
@@ -441,6 +441,8 @@ html[data-skill="linear-modern"] .skill-switcher-type-menu {
 .skill-switcher-scroll .skill-chip:hover .skill-chip-name {
   text-decoration: underline;
   text-underline-offset: 3px;
+  text-decoration-color: #000000;
+  text-decoration-thickness: 0.5px;
 }
 
 .skill-switcher-scroll .skill-chip-active,
@@ -448,11 +450,6 @@ html[data-skill="linear-modern"] .skill-switcher-type-menu {
   border: none;
   background-color: transparent;
   opacity: 1;
-}
-
-.skill-switcher-scroll .skill-chip-active:hover .skill-chip-name {
-  text-decoration: underline;
-  text-underline-offset: 3px;
 }
 
 .skill-switcher-scroll .skill-chip--brand {
@@ -465,15 +462,14 @@ html[data-skill="linear-modern"] .skill-switcher-type-menu {
   background-color: transparent;
 }
 
-.skill-switcher-scroll .skill-chip--brand:hover .skill-chip-icon-wrap::after,
-.skill-switcher-scroll .skill-chip--brand.skill-chip-active:hover .skill-chip-icon-wrap::after {
+.skill-switcher-scroll .skill-chip--brand:hover .skill-chip-icon-wrap::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: -4px;
-  height: 1px;
-  background-color: currentColor;
+  height: 0.5px;
+  background-color: #000000;
 }
 
 .skill-switcher-scroll .skill-chip--brand.skill-chip-active {

@@ -90,7 +90,7 @@ function BeforeAfter() {
       className={`before-after${isInView ? ' before-after--visible' : ''}`}
     >
       <div className="container">
-        <h2 className="before-after-title">Before and after</h2>
+        <h2 className="before-after-title">Before and After</h2>
         <p className="before-after-subtitle">
           The same app logic—with and without a design system your agent can follow.
         </p>
