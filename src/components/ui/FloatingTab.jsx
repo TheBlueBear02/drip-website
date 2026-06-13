@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-import { useSkillContext } from '../../context/SkillContext';
-import { skillMetas } from '../../skills';
-import { resolveSkillId, isBrandTheme } from '../../utils/resolveSkill';
+import { useSkillContext } from '@/context/SkillContext';
+import { skillMetas } from '@/skills';
+import { resolveSkillId, isBrandTheme } from '@/utils/resolveSkill';
 import './FloatingTab.css';
 
 function FloatingTab() {

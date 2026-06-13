@@ -1,0 +1,82 @@
+/* Portfolio mock preview */
+
+.mock-portfolio-intro {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.mock-portfolio-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(
+    135deg,
+    var(--site-accent),
+    color-mix(in srgb, var(--site-accent-2, var(--site-accent)) 60%, transparent)
+  );
+  border: 2px solid var(--site-border);
+}
+
+.mock-portfolio-role {
+  margin-bottom: 8px !important;
+  font-weight: 600;
+}
+
+.mock-portfolio-tagline {
+  font-size: 15px;
+  color: var(--site-text-muted);
+  line-height: 1.5;
+  font-family: var(--site-font-body);
+}
+
+.mock-portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 12px;
+}
+
+.mock-project-tile {
+  border-radius: var(--site-radius-md);
+  border: 1px solid var(--site-border);
+  background: var(--site-surface);
+  overflow: hidden;
+  box-shadow: var(--site-shadow-sm);
+}
+
+.mock-project-tile--featured {
+  grid-column: 1 / -1;
+}
+
+.mock-project-tile-image {
+  height: 80px;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--site-accent) 25%, var(--site-bg)),
+    var(--site-bg)
+  );
+}
+
+.mock-project-tile--featured .mock-project-tile-image {
+  height: 120px;
+}
+
+.mock-project-tile-meta {
+  padding: 10px 12px;
+}
+
+.mock-project-tile-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--site-hero-text, var(--site-text));
+  margin-bottom: 2px;
+  font-family: var(--site-font-head);
+}
+
+.mock-project-tile-category {
+  font-size: 11px;
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}

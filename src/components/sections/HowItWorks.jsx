@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { useInView } from '../../hooks/useInView';
-import { skillList } from '../../skills';
-import { FEATURED_SKILL_ID } from '../../utils/resolveSkill';
-import CopyCommand from '../ui/CopyCommand';
+import { useInView } from '@/hooks/useInView';
+import { skillList } from '@/skills';
+import { FEATURED_SKILL_ID } from '@/utils/resolveSkill';
+import CopyCommand from '@/components/ui/CopyCommand';
 import './HowItWorks.css';
 
 const FEATURED_COMMAND = `npx getdrip add ${FEATURED_SKILL_ID}`;
@@ -150,7 +150,7 @@ function HowItWorks() {
       className={`how-it-works site-reveal-section${isInView ? ' is-visible' : ''}`}
     >
       <div className="container">
-        <h2 className="how-it-works-title site-reveal">It's Never Been Easier</h2>
+        <h2 className="how-it-works-title site-reveal">How it works</h2>
         <p className="how-it-works-subtitle site-reveal" style={{ '--site-reveal-delay': '120ms' }}>
           Pick a design system, paste one command, and your agent builds in that world.
         </p>

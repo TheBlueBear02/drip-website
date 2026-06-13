@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import MiniPreview from '../ui/MiniPreview';
-import ImageCompare from '../ui/ImageCompare';
-import { useInView } from '../../hooks/useInView';
+import MiniPreview from '@/components/ui/MiniPreview';
+import ImageCompare from '@/components/ui/ImageCompare';
+import { useInView } from '@/hooks/useInView';
 import './BeforeAfter.css';
 
 const BEFORE_IMAGE = 'proof/before.png';

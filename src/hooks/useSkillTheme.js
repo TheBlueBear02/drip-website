@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useSkillContext } from '../context/SkillContext';
-import { skillThemes } from '../skills';
+import { useSkillContext } from '@/context/SkillContext';
+import { skillThemes } from '@/skills';
 
 /**
  * Watches the resolved active theme

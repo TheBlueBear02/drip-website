@@ -1,4 +1,4 @@
-/* Minimal reset - main styles are in styles.css */
+/* Global layout helpers and scroll-anchor offsets */
 #root {
   width: 100%;
   min-height: 100vh;

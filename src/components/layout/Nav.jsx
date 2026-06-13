@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSkillContext } from '../../context/SkillContext';
+import { useSkillContext } from '@/context/SkillContext';
 import './Nav.css';
 
 // Full repo path for GitHub API (owner/repo)
@@ -44,7 +44,7 @@ function Nav() {
           </Link>
           <div className="nav-links">
             <a href="#how-it-works" onClick={(e) => handleScrollTo(e, 'how-it-works')} className="nav-link">
-              It's Never Been Easier
+              How it works
             </a>
             <a href="#skills" onClick={(e) => handleScrollTo(e, 'skills')} className="nav-link">
               Skills

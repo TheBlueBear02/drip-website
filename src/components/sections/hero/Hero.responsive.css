@@ -1,0 +1,107 @@
+/* Hero — responsive layout */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 80px 0 96px;
+  }
+
+  .hero--brand {
+    text-align: center;
+  }
+
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    width: 100%;
+  }
+
+  .hero--brand .hero-copy {
+    order: 1;
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
+  .hero--brand .hero-headline {
+    width: 100%;
+  }
+
+  .hero--brand .hero-headline-line {
+    white-space: normal;
+  }
+
+  .hero--brand .hero-subheadline {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero--brand .hero-cta-group {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero--brand .hero-try-label {
+    text-align: center;
+  }
+
+  .hero--brand .hero-project-types {
+    justify-content: center;
+  }
+
+  .hero--brand .hero-headline-character {
+    text-align: center;
+  }
+
+  .hero--brand .hero-media {
+    order: 2;
+    width: 100%;
+  }
+
+  .hero--brand .hero-video {
+    width: 100%;
+  }
+
+  .hero-media {
+    order: 2;
+  }
+
+  .hero-copy {
+    order: 1;
+    max-width: none;
+  }
+
+  .hero--neo-brutalism,
+  .hero--hand-drawn,
+  .hero--playful-geometric {
+    padding-top: 28px;
+  }
+
+  .hero--playful-geometric .hero-card {
+    padding: 32px 24px 40px;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero-project-types {
+    gap: 8px;
+  }
+
+  .hero-project-type-chip {
+    padding: 9px 14px;
+    font-size: 14px;
+  }
+
+  .hero-command {
+    width: 100%;
+  }
+
+  .hero-button,
+  .hero-button--simple,
+  .hero-button--secondary {
+    width: 100%;
+    text-align: center;
+  }
+}

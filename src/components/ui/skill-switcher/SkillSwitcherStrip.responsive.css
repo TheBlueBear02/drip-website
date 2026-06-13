@@ -1,0 +1,88 @@
+@media (max-width: 768px) {
+  .skill-switcher-strip--project-type {
+    max-height: 108px;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .skill-switcher-strip--project-type .container {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+
+  .skill-switcher-types-row {
+    grid-column: 1;
+    width: 100%;
+    max-width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .skill-switcher-building-label {
+    font-size: 13px;
+    align-self: center;
+  }
+
+  .skill-switcher-strip--project-type .skill-switcher-types {
+    width: 100%;
+    flex: none;
+    padding-bottom: 10px;
+    mask-image: linear-gradient(to right, #000 90%, transparent 100%);
+  }
+
+  .skill-switcher-scroll {
+    padding-bottom: 10px;
+  }
+
+  .skill-chip--project-type {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .skill-switcher-type-anchor-label {
+    max-width: 88px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-switcher-strip--project-type {
+    max-height: 104px;
+    padding: 8px 0 6px;
+  }
+
+  .skill-switcher-building-label {
+    font-size: 12px;
+  }
+
+  .skill-chip--project-type {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-switcher-strip {
+    transition: none;
+  }
+
+  .skill-switcher-strip--collapsed {
+    max-height: 72px;
+    opacity: 1;
+    padding: 10px 0 8px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .skill-switcher-type-anchor--enter,
+  .skill-switcher-scroll--enter > .skill-chip,
+  .skill-switcher-scroll--enter > .skill-switcher-see-more {
+    animation: none;
+  }
+
+  .skill-switcher-type-chevron {
+    transition: none;
+  }
+}

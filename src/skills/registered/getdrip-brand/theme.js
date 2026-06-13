@@ -42,7 +42,7 @@ export const getdripBrandTheme = {
     '--site-radius-full': '9999px',
 
     '--site-font-head': '"DM Sans", system-ui, sans-serif',
-    '--site-font-section-title': '"Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+    '--site-font-section-title': 'Geist, "Geist Fallback"',
     '--site-font-body': '"DM Sans", system-ui, sans-serif',
     '--site-font-mono': '"JetBrains Mono", monospace',
     '--site-head-weight': '600',

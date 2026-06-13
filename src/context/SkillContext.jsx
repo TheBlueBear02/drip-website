@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react';
-import { getSkillFromSearch } from '../utils/resolveSkill';
-import { DEFAULT_HERO_TYPE, getInitialHeroTypeFromUrl } from '../data/heroTypes';
+import { getSkillFromSearch } from '@/utils/resolveSkill';
+import { DEFAULT_HERO_TYPE, getInitialHeroTypeFromUrl } from '@/data/heroTypes';
 
 const SkillContext = createContext();
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useSkillContext } from '../../context/SkillContext';
-import { skillList } from '../../skills';
-import { resolveSkillId } from '../../utils/resolveSkill';
-import { useInView } from '../../hooks/useInView';
-import CopyCommand from '../ui/CopyCommand';
+import { useSkillContext } from '@/context/SkillContext';
+import { skillList } from '@/skills';
+import { resolveSkillId } from '@/utils/resolveSkill';
+import { useInView } from '@/hooks/useInView';
+import CopyCommand from '@/components/ui/CopyCommand';
 import './SkillsPreview.css';
 
 const DESKTOP_INITIAL_CARDS = 3;

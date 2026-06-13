@@ -1,8 +1,8 @@
 import './PlatformSupport.css';
-import { useSkillContext } from '../../context/SkillContext';
-import { skillMetas } from '../../skills';
-import { resolveSkillId } from '../../utils/resolveSkill';
-import { useInView } from '../../hooks/useInView';
+import { useSkillContext } from '@/context/SkillContext';
+import { skillMetas } from '@/skills';
+import { resolveSkillId } from '@/utils/resolveSkill';
+import { useInView } from '@/hooks/useInView';
 
 const LOGOS_BASE = `${import.meta.env.BASE_URL}platforms%20logos`;
 

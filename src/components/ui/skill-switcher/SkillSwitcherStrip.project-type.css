@@ -1,0 +1,58 @@
+.skill-switcher-strip--project-type .container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.skill-switcher-types-row {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  justify-self: center;
+}
+
+.skill-switcher-building-label {
+  flex-shrink: 0;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--site-font-body);
+  color: var(--site-text);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.skill-switcher-strip--project-type .skill-switcher-types {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--site-border) transparent;
+  padding-bottom: 2px;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.skill-switcher-strip--project-type .skill-switcher-types::-webkit-scrollbar {
+  height: 6px;
+}
+
+.skill-switcher-strip--project-type .skill-switcher-types::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skill-switcher-strip--project-type .skill-switcher-types::-webkit-scrollbar-thumb {
+  background-color: var(--site-border);
+  border-radius: var(--site-radius-full);
+}
+
+.skill-switcher-body {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}

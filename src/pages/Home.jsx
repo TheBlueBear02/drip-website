@@ -1,14 +1,20 @@
-import Nav from '../components/layout/Nav';
-import SkillSwitcherStrip from '../components/ui/SkillSwitcherStrip';
-import Hero from '../components/sections/Hero';
-import LivePreviewCallout from '../components/sections/LivePreviewCallout';
-import BeforeAfter from '../components/sections/BeforeAfter';
-import HowItWorks from '../components/sections/HowItWorks';
-import SkillsPreview from '../components/sections/SkillsPreview';
-import UserRecommendations from '../components/sections/UserRecommendations';
-import PlatformSupport from '../components/sections/PlatformSupport';
-import FAQ from '../components/sections/FAQ';
-import Footer from '../components/layout/Footer';
+import { lazy, Suspense } from 'react';
+import Nav from '@/components/layout/Nav';
+import SkillSwitcherStrip from '@/components/ui/SkillSwitcherStrip';
+import Hero from '@/components/sections/Hero';
+
+const BeforeAfter = lazy(() => import('@/components/sections/BeforeAfter'));
+const HowItWorks = lazy(() => import('@/components/sections/HowItWorks'));
+const LivePreviewCallout = lazy(() => import('@/components/sections/LivePreviewCallout'));
+const SkillsPreview = lazy(() => import('@/components/sections/SkillsPreview'));
+const UserRecommendations = lazy(() => import('@/components/sections/UserRecommendations'));
+const PlatformSupport = lazy(() => import('@/components/sections/PlatformSupport'));
+const FAQ = lazy(() => import('@/components/sections/FAQ'));
+const Footer = lazy(() => import('@/components/layout/Footer'));
+
+function SectionFallback() {
+  return <div className="section-fallback" aria-hidden="true" />;
+}
 
 function Home() {
   return (
@@ -18,14 +24,16 @@ function Home() {
         <SkillSwitcherStrip />
       </header>
       <Hero />
-      <BeforeAfter />
-      <HowItWorks />
-      <LivePreviewCallout />
-      <SkillsPreview />
-      <UserRecommendations />
-      <PlatformSupport />
-      <FAQ />
-      <Footer />
+      <Suspense fallback={<SectionFallback />}>
+        <BeforeAfter />
+        <HowItWorks />
+        <LivePreviewCallout />
+        <SkillsPreview />
+        <UserRecommendations />
+        <PlatformSupport />
+        <FAQ />
+        <Footer />
+      </Suspense>
     </>
   );
 }

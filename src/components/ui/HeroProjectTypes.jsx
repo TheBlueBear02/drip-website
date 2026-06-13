@@ -1,4 +1,4 @@
-import { heroTypeList } from '../../data/heroTypes';
+import { heroTypeList } from '@/data/heroTypes';
 
 function HeroProjectTypes({ activeHeroType, hasSelected, onSelect }) {
   return (

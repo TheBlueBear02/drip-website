@@ -1,10 +1,10 @@
-import { useSkillContext } from '../../context/SkillContext';
-import HeroProjectTypes from '../ui/HeroProjectTypes';
+import { useSkillContext } from '@/context/SkillContext';
+import HeroProjectTypes from '@/components/ui/HeroProjectTypes';
 import HeroVideo from './HeroVideo';
 import HeroCharacterWord from './HeroCharacterWord';
-import SkillHeroShell from '../heroes/SkillHeroShell';
-import { resolveSkillId, isBrandTheme, FEATURED_SKILL_ID } from '../../utils/resolveSkill';
-import { resolveHeroType, DEFAULT_HERO_TYPE } from '../../data/heroTypes';
+import SkillHeroShell from '@/components/heroes/SkillHeroShell';
+import { resolveSkillId, isBrandTheme, FEATURED_SKILL_ID } from '@/utils/resolveSkill';
+import { resolveHeroType, DEFAULT_HERO_TYPE } from '@/data/heroTypes';
 import './Hero.css';
 import '../heroes/heroes.css';
 
@@ -35,10 +35,10 @@ function Hero() {
   const copyContent = (
     <>
       <h1 className="hero-headline">
-        Your AI App Works,
+        Your AI app works,
         <br />
         <span className="hero-headline-line">
-          Now Give It <HeroCharacterWord />
+          now give it <HeroCharacterWord />
         </span>
       </h1>
       <p className="hero-subheadline">

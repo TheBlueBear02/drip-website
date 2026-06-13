@@ -1,0 +1,163 @@
+/* Dashboard mock preview */
+
+.mock-dashboard {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  border: 1px solid var(--site-border);
+  border-radius: var(--site-radius-md);
+  background: var(--site-surface);
+  box-shadow: var(--site-shadow-md);
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.mock-dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-right: 1px solid var(--site-border);
+  background: var(--site-surface-2, var(--site-bg));
+}
+
+.mock-dashboard-sidebar-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--site-radius-sm, 6px);
+  background: var(--site-border);
+  opacity: 0.5;
+}
+
+.mock-dashboard-sidebar-icon--active {
+  background: var(--site-accent);
+  opacity: 1;
+}
+
+.mock-dashboard-main {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mock-dashboard-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mock-kpi {
+  padding: 10px 12px;
+  border-radius: var(--site-radius-sm, 8px);
+  border: 1px solid var(--site-border);
+  background: var(--site-bg);
+}
+
+.mock-kpi-label {
+  font-size: 10px;
+  color: var(--site-text-muted);
+  margin-bottom: 4px;
+  font-family: var(--site-font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mock-kpi-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--site-hero-text, var(--site-text));
+  font-family: var(--site-font-head);
+  line-height: 1.1;
+}
+
+.mock-kpi-delta {
+  font-size: 10px;
+  color: var(--site-accent);
+  margin-top: 2px;
+  font-family: var(--site-font-body);
+}
+
+.mock-dashboard-chart-panel {
+  padding: 12px;
+  border-radius: var(--site-radius-sm, 8px);
+  border: 1px solid var(--site-border);
+  background: var(--site-bg);
+}
+
+.mock-dashboard-panel-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--site-text-muted);
+  margin-bottom: 12px;
+  font-family: var(--site-font-body);
+}
+
+.mock-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 72px;
+}
+
+.mock-bar-chart-col {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.mock-bar-chart-bar {
+  width: 100%;
+  height: var(--bar-height, 50%);
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(
+    to top,
+    var(--site-accent),
+    color-mix(in srgb, var(--site-accent) 50%, transparent)
+  );
+  animation: mock-bar-grow 0.8s var(--site-ease, ease) both;
+}
+
+@keyframes mock-bar-grow {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mock-bar-chart-bar {
+    animation: none;
+  }
+}
+
+.mock-dashboard-activity {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mock-dashboard-activity-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  padding: 6px 8px;
+  border-radius: var(--site-radius-sm, 6px);
+  background: var(--site-bg);
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}
+
+.mock-dashboard-activity-value {
+  font-weight: 600;
+  color: var(--site-hero-text, var(--site-text));
+}

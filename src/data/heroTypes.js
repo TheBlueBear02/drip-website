@@ -1,7 +1,7 @@
-import DashboardHero from '../components/heroes/DashboardHero';
-import LandingPageHero from '../components/heroes/LandingPageHero';
-import SaasSiteHero from '../components/heroes/SaasSiteHero';
-import PortfolioHero from '../components/heroes/PortfolioHero';
+import DashboardHero from '@/components/heroes/DashboardHero';
+import LandingPageHero from '@/components/heroes/LandingPageHero';
+import SaasSiteHero from '@/components/heroes/SaasSiteHero';
+import PortfolioHero from '@/components/heroes/PortfolioHero';
 
 export const DEFAULT_HERO_TYPE = 'dashboard';
 export const PROJECT_URL_PARAM = 'project';

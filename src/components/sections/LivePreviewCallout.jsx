@@ -1,5 +1,5 @@
-import { useInView } from '../../hooks/useInView';
-import SkillWorkflowDiagram from '../diagrams/SkillWorkflowDiagram';
+import { useInView } from '@/hooks/useInView';
+import SkillWorkflowDiagram from '@/components/diagrams/SkillWorkflowDiagram';
 import './LivePreviewCallout.css';
 
 const PROMPT_IMAGE = 'proof/single-prompt.svg';

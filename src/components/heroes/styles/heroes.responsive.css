@@ -1,0 +1,99 @@
+/* Hero preview responsive + card-wrapped skill layouts */
+
+.hero--playful-geometric .hero-card:has(.hero-preview-content),
+.hero--neo-brutalism .hero-card:has(.hero-preview-content),
+.hero--hand-drawn .hero-card:has(.hero-preview-content) {
+  max-width: 100%;
+}
+
+.hero--playful-geometric .hero-preview-content,
+.hero--neo-brutalism .hero-preview-content,
+.hero--hand-drawn .hero-preview-content {
+  max-width: none;
+}
+
+.hero--playful-geometric .hero-card .hero-preview-split,
+.hero--neo-brutalism .hero-card .hero-preview-split,
+.hero--hand-drawn .hero-card .hero-preview-split {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .hero-preview-split {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero-preview-header {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-preview-command {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .hero-preview-command .copy-command {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .hero-preview-command .copy-command-text {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hero-preview-cta-row {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-preview-cta-row .hero-button {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .mock-saas-features {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-dashboard-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-portfolio-intro {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mock-portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-project-tile--featured {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-preview-command .copy-command-lg {
+    padding: 12px 16px;
+    font-size: 14px;
+    gap: 10px;
+  }
+}

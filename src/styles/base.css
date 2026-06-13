@@ -11,6 +11,14 @@
   src: url('https://cdn.jsdelivr.net/fontsource/fonts/mona-sans:vf@latest/latin-wght-normal.woff2') format('woff2-variations');
 }
 
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@latest/latin-wght-normal.woff2') format('woff2-variations');
+}
+
 :root {
   /* ── BACKGROUNDS — getDRIP brand default (light editorial) ─ */
   --site-bg:          #FAFAF8;
@@ -58,7 +66,7 @@
 
   /* ── TYPOGRAPHY ──────────────────────────────────────────── */
   --site-font-head:           "DM Sans", system-ui, sans-serif;
-  --site-font-section-title:  "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --site-font-section-title:  Geist, "Geist Fallback";
   --site-font-body:           "DM Sans", system-ui, sans-serif;
   --site-font-mono:   "JetBrains Mono", monospace;
   --site-head-weight: 600;

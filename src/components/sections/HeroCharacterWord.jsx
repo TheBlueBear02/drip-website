@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { skillList, skillThemes } from '../../skills';
+import { skillList, skillThemes } from '@/skills';
 
 const CHARACTER_STYLES = skillList.map((meta) => {
   const theme = skillThemes[meta.id];
@@ -80,7 +80,7 @@ function HeroCharacterWord() {
               fontWeight: variant.fontWeight,
             }}
           >
-            Character
+            character
           </span>
         ))}
       </span>
@@ -97,7 +97,7 @@ function HeroCharacterWord() {
           key={animKey}
           className={`hero-headline-character-inner${animKey > 0 ? ' hero-headline-character-inner--animate' : ''}`}
         >
-          Character
+          character
         </span>
       </span>
     </>

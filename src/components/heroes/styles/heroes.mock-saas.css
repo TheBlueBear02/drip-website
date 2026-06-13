@@ -1,0 +1,132 @@
+/* Mock browser chrome + SaaS preview */
+
+.mock-browser {
+  border: 1px solid var(--site-border);
+  border-radius: var(--site-radius-md);
+  background: var(--site-surface);
+  box-shadow: var(--site-shadow-md);
+  overflow: hidden;
+}
+
+.mock-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--site-border);
+  background: var(--site-surface-2, var(--site-surface));
+}
+
+.mock-browser-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--site-border-strong, var(--site-border));
+  opacity: 0.6;
+}
+
+.mock-browser-url {
+  flex: 1;
+  height: 8px;
+  margin-left: 8px;
+  border-radius: var(--site-radius-full);
+  background: var(--site-border);
+  opacity: 0.5;
+  max-width: 140px;
+}
+
+.mock-browser-body {
+  padding: 16px;
+}
+
+.mock-saas-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mock-saas-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--site-radius-sm, 6px);
+  background: var(--site-accent);
+  flex-shrink: 0;
+}
+
+.mock-saas-nav-link {
+  flex: 1;
+  max-width: 48px;
+  height: 6px;
+  border-radius: var(--site-radius-full);
+  background: var(--site-border);
+  opacity: 0.6;
+}
+
+.mock-saas-nav-cta {
+  width: 52px;
+  height: 20px;
+  border-radius: var(--site-radius-full);
+  background: var(--site-accent);
+  opacity: 0.85;
+  margin-left: auto;
+}
+
+.mock-saas-hero-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  border-radius: var(--site-radius-md);
+  background: color-mix(in srgb, var(--site-accent) 12%, var(--site-surface));
+  border: 1px solid color-mix(in srgb, var(--site-accent) 25%, transparent);
+}
+
+.mock-saas-metric-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--site-accent);
+  font-family: var(--site-font-head);
+  line-height: 1;
+}
+
+.mock-saas-metric-label {
+  font-size: 11px;
+  color: var(--site-text-muted);
+  font-family: var(--site-font-body);
+}
+
+.mock-saas-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mock-saas-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--site-radius-sm, 8px);
+  border: 1px solid var(--site-border);
+  background: var(--site-bg);
+}
+
+.mock-saas-feature-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--site-radius-sm, 6px);
+  background: color-mix(in srgb, var(--site-accent) 30%, transparent);
+}
+
+.mock-saas-feature-line {
+  height: 5px;
+  border-radius: var(--site-radius-full);
+  background: var(--site-border);
+  opacity: 0.7;
+}
+
+.mock-saas-feature-line--short {
+  width: 60%;
+}

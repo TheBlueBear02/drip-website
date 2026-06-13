@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useSkillContext } from '../context/SkillContext';
-import { parseSkillParam, SKILL_URL_PARAM } from '../utils/resolveSkill';
+import { useSkillContext } from '@/context/SkillContext';
+import { parseSkillParam, SKILL_URL_PARAM } from '@/utils/resolveSkill';
 
 /**
  * Keeps the locked active skill in sync with ?skill= in the URL.

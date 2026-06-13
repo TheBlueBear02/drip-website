@@ -17,7 +17,7 @@ a library skill from the switcher, they enter that design world live.
 
 **getDRIP brand typography** (`src/skills/registered/getdrip-brand/theme.js`):
 - Body uses **DM Sans** (simple, readable sans-serif)
-- Section titles (`--site-font-section-title`): **Mona Sans**, Helvetica Neue, Helvetica, Arial
+- Section titles (`--site-font-section-title`): **Geist**, Geist Fallback
 - Other headings (`--site-font-head`): **DM Sans**
 - Section titles: `--site-head-weight: 600`
 - Hero headline: `--site-hero-headline-weight: 600`
@@ -185,7 +185,9 @@ getdrip-site/
 │   │   ├── useSkillTheme.js        ← Writes tokens to :root
 │   │   ├── useSkillUrlSync.js      ← Syncs activeSkill ↔ ?skill= query param
 │   │   ├── useHeroTypeUrlSync.js   ← Syncs activeHeroType ↔ ?project= query param
-│   │   └── useCopyCommand.js       ← Copy-to-clipboard with feedback
+│   │   ├── useSwitcherAnimations.js← SkillSwitcherStrip enter/stagger animations
+│   │   ├── useScrollCollapse.js    ← Collapse skill strip on scroll down
+│   │   └── useInView.js            ← Intersection observer for section reveals
 │   │
 │   ├── skills/                     ← THE SKILL REGISTRY
 │   │   ├── index.js                ← Exports all skills as array
@@ -213,18 +215,22 @@ getdrip-site/
 │   │   │       └── meta.js
 │   │
 │   ├── components/                 ← Site UI components (all use CSS vars)
+│   │   ├── SkillUrlSync.jsx        ← Composes useSkillUrlSync + useHeroTypeUrlSync
+│   │   ├── ErrorBoundary.jsx       ← Top-level error boundary around Routes
 │   │   ├── diagrams/
 │   │   │   └── SkillWorkflowDiagram.jsx  ← Inline SVG skill architecture flow for LivePreviewCallout
 │   │   ├── layout/
 │   │   │   ├── Nav.jsx
 │   │   │   └── Footer.jsx
 │   │   ├── ui/
-│   │   │   ├── Button.jsx
-│   │   │   ├── Badge.jsx
 │   │   │   ├── CopyCommand.jsx     ← The npx command pill with copy button
 │   │   │   ├── FloatingTab.jsx     ← Bottom-right floating tab: getDRIP / current design + copy command
-│   │   │   ├── SkillCard.jsx       ← Card in the skills grid
 │   │   │   ├── SkillSwitcherStrip.jsx
+│   │   │   │   ├── SkillSwitcherProjectTypeRow.jsx
+│   │   │   │   ├── SkillSwitcherStylesRow.jsx
+│   │   │   │   ├── SkillSwitcherTypeMenu.jsx
+│   │   │   │   └── skill-switcher/*.css
+│   │   │   ├── icons/ChevronIcon.jsx
 │   │   │   └── MiniPreview.jsx
 │   │   ├── heroes/
 │   │   │   ├── SkillHeroShell.jsx      ← Per-skill decorative wrapper (blobs, shapes, cards)
@@ -234,10 +240,12 @@ getdrip-site/
 │   │   │   ├── DashboardHero.jsx
 │   │   │   ├── LandingPageHero.jsx
 │   │   │   ├── PortfolioHero.jsx
-│   │   │   ├── heroes.css
+│   │   │   ├── heroes.css          ← Aggregator importing styles/*.css
+│   │   │   ├── styles/             ← Split hero preview CSS (preview, mocks, responsive)
 │   │   │   └── mock/                   ← MockBrowserChrome, MockKpi, MockBarChart, MockProjectTile
 │   │   └── sections/
 │   │       ├── Hero.jsx
+│   │       ├── hero/               ← Split Hero CSS (base, variants, responsive)
 │   │       ├── HowItWorks.jsx
 │   │       ├── SkillsPreview.jsx
 │   │       ├── PlatformSupport.jsx
@@ -248,18 +256,18 @@ getdrip-site/
 │   │       └── UserRecommendations.jsx
 │   │
 │   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Skills.jsx
-│   │   ├── SkillDetail.jsx
-│   │   └── Docs.jsx
+│   │   └── Home.jsx                ← Single-page app (lazy-loads below-fold sections)
 │   │
 │   └── styles/
 │       ├── base.css                ← :root tokens, resets, base typography
-│       ├── components.css          ← Shared component styles (using vars)
-│       └── transitions.css         ← Root transition, theme-swap animation
+│       └── sectionReveal.css       ← Section scroll-reveal animations
 │
+├── eslint.config.js                ← ESLint 9 flat config (src/ only; skills/ ignored)
+├── jsconfig.json                   ← Path alias @/* → src/*
+├── .prettierrc                     ← Code formatting
+├── README.md                       ← Dev/build/deploy docs
 ├── index.html                      ← Meta tags (description, og:, twitter:), theme-color, social preview image URL
-├── vite.config.js                  ← base: '/repo-name/' for GitHub Pages
+├── vite.config.js                  ← @ alias, manualChunks, GitHub Pages base
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml              ← Auto-deploy to gh-pages on push
@@ -280,7 +288,7 @@ The entry point. Default state uses **getDRIP brand** (light, DM Sans typography
 
 ```
 Nav
-  └── Logo (GETDRIP + Beta) — links to `/`, resets to getDRIP brand default (`setActiveSkill(null)`, `setPreviewSkill(null)`), scrolls to top | It's Never Been Easier | Skills | Platforms | Q&A | GitHub stars | "Browse all designs" CTA
+  └── Logo (GETDRIP + Beta) — links to `/`, resets to getDRIP brand default (`setActiveSkill(null)`, `setPreviewSkill(null)`), scrolls to top | How it works | Skills | Platforms | Q&A | GitHub stars | "Browse all designs" CTA
 
 SkillSwitcherStrip
   └── Step 1 (project type): `"I'm building:"` label + row of 4 chips from `heroTypeList` in `src/data/heroTypes.js` — Dashboard, Landing page, SaaS site, Portfolio; click → `selectProjectType(id)` and advance to step 2
@@ -293,7 +301,7 @@ SkillSwitcherStrip
 Hero
   └── Brand default (getdrip-brand): split layout — copy left, HeroVideo right
       ├── Eyebrow: "Design systems for AI-built apps"
-      ├── Headline: "Your AI App Works / Now Give It Character" — `HeroCharacterWord` cycles library skills every 7s (`skillList` order): accent color + heading font from each theme; slide-up enter animation on change; preloads skill font URLs; fixed-width slot (max measured width) + `white-space: nowrap` on second line to prevent wrap on font change
+      ├── Headline: "Your AI app works / now give it character" — `HeroCharacterWord` cycles library skills every 7s (`skillList` order): accent color + heading font from each theme; slide-up enter animation on change; preloads skill font URLs; fixed-width slot (max measured width) + `white-space: nowrap` on second line to prevent wrap on font change
       ├── `"I'm building:"` label + `HeroProjectTypes` — same 4 chips as navbar step 1; click → `selectProjectTypeFromHero(id)` syncs type, highlights chip, then animates navbar to step 2 (designs)
       └── HeroVideo: `VITE_DEMO_VIDEO_URL` in `.env` (not `.env.example`); YouTube/Vimeo embed or file under `public/` (path must match filename exactly, e.g. `proof/getDrip-example-video.mp4`); local paths resolved with `import.meta.env.BASE_URL`; wrong path may return SPA HTML (200) instead of 404 — video shows blank; `onError` shows load hint; restart dev server after env change; poster/thumbnail uses `public/proof/after.png` (same as Before/After “with skill” panel); dark scrim + centered circular play button overlay until first play (embeds lazy-load on click with autoplay); overlay returns when direct video ends
   └── Library skill active: project-type hero archetypes via `SkillHeroShell` + `src/data/heroTypes.js`
@@ -321,7 +329,7 @@ BeforeAfter
   └── Fallback: MiniPreview generic vs styled (or style preview PNG)
   └── Below the grid: single `ImageCompare` block (`src/components/ui/ImageCompare.jsx`) — before/after screenshots stacked in one frame with a draggable vertical divider (pointer drag + keyboard slider); same proof images and fallbacks as the panels; gated by `SHOW_INTERACTIVE_COMPARE` in `BeforeAfter.jsx` (currently `false`, hidden on site)
 
-HowItWorks          ← heading: "It's Never Been Easier"; interactive 5-step selector (left nav + right detail panel)
+HowItWorks          ← heading: "How it works"; interactive 5-step selector (left nav + right detail panel)
   └── Subtitle: "Pick a design system, paste one command, and your agent builds in that world."
   └── Two-column layout (max-width ~980px): left step nav (~240–300px) + right detail panel (featured accent card)
   └── `activeStep` state (`useState(0)`); step buttons use `aria-pressed`; panel uses `aria-live="polite"` and re-mounts on step change for light fade-in
@@ -372,107 +380,9 @@ Footer              ← GitHub, npm, anchors, GitHub Issues contact
 
 ---
 
-### 2. Skills (/skills)
+### Removed pages (legacy — not in v2 SPA)
 
-The full library. Same SkillSwitcherStrip at top (it's always there).
-The grid itself always reflects the active skill's design tokens.
-
-**Layout:**
-
-```
-PageHeader
-  └── "Skills Library" heading
-  └── Subtitle: "X skills available"
-
-FilterBar
-  └── All | Dark | Light | Colorful | Minimal | Expressive
-  └── Active filter highlighted in --site-accent
-
-SkillGrid
-  └── CSS grid, 3 columns desktop / 2 tablet / 1 mobile
-  └── Each SkillCard:
-      ├── MiniPreview — a 200×140px thumbnail rendered in the skill's actual tokens
-      ├── Skill name
-      ├── Category badge
-      ├── Mood tags (2-3)
-      ├── CopyCommand pill
-      └── "Preview →" button → navigates to /skills/[id]
-  └── Hovering a card = temporary full-site preview
-  └── Clicking "Preview →" = navigate + lock skill
-
-EmptyState (if filter returns nothing)
-```
-
-**MiniPreview component** — the card thumbnail:
-A small self-contained box that renders a micro version of the skill's landing page —
-just the hero section, shrunk down. It uses the skill's own token values directly
-(not the `:root` vars), so all cards can show their own preview simultaneously
-regardless of which skill is currently active on the site.
-
----
-
-### 3. Skill Detail (/skills/:skillId)
-
-Landing on this page automatically locks the skill as active.
-The entire site is now in that design world.
-
-**Sections:**
-
-```
-FullPreviewPanel
-  └── The skill's LandingPage.jsx rendered in an iframe or sandboxed div
-  └── Viewport toggle: Desktop / Tablet / Mobile
-  └── "Viewing: Retro Terminal" label
-
-InstallSection     ← Big, can't miss it
-  └── Large heading: "Make your AI build like this"
-  └── CopyCommand pill — oversized, prominent
-  └── "Copy command → paste in agent chat"
-  └── Supported agents: Cursor | Lovable | Bolt | Claude Code
-
-WhatIsInside
-  └── Components list (from skill meta)
-  └── Token categories (colors, typography, shadows, etc.)
-  └── Stack requirements
-
-BeforeAfter
-  └── Toggle between generic AI output vs skill output
-  └── Side-by-side or slider comparison
-
-HowToApply
-  └── 3-step guide with code snippets
-  └── "The activation prompt" — the exact text to paste into the agent
-
-RelatedSkills
-  └── 2-3 other skills in same category
-```
-
----
-
-### 4. Docs (/docs)
-
-Minimal. Just enough to go from zero to working.
-Uses whatever skill is currently active for its visual design.
-
-**Sections:**
-
-```
-Sidebar navigation (desktop) / Accordion (mobile)
-  ├── Quick Start
-  ├── Applying to an existing project
-  ├── Applying to a new project
-  ├── CLI reference
-  └── Platform guides
-      ├── Cursor
-      ├── Lovable
-      ├── Bolt
-      └── Claude Code
-
-Content area
-  └── Each doc section is a standalone scrollable article
-  └── Code blocks use the skill's mono font + accent color
-  └── Inline CopyCommand pills for all commands
-```
+The standalone `/skills`, `/skills/:id`, and `/docs` routes and their page components were removed during structure modernization. Skills browsing lives in the **SkillsPreview** section on Home (`#skills` anchor). See `src/components/sections/SkillsPreview.jsx` for the inline `SkillCard` implementation.
 
 ---
 
@@ -558,13 +468,12 @@ Content area
 // Rendered in App.jsx so it appears on all routes.
 ```
 
-### `SkillCard.jsx`
+### `SkillsPreview.jsx` (inline SkillCard)
 
 ```jsx
-// Props: skill (meta object)
-// Contains MiniPreview, name, tags, CopyCommand (sm), Preview button
+// Inline SkillCard function inside SkillsPreview.jsx (not a separate file)
+// Contains MiniPreview, name, tags, CopyCommand (sm), preview/lock behavior
 // onMouseEnter/Leave → preview behavior via context
-// onClick on Preview → navigate + lock skill
 ```
 
 ### `PlatformSupport.jsx`
@@ -579,22 +488,32 @@ Content area
 
 ---
 
-## ROUTING SETUP (Hash Mode for GitHub Pages)
+## ROUTING SETUP (BrowserRouter + GitHub Pages basename)
 
 ```jsx
-// App.jsx
-import { HashRouter, Routes, Route } from 'react-router-dom';
+// App.jsx — single route; ErrorBoundary wraps Routes
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Routes:
-// #/              → Home
-// #/skills        → Skills
-// #/skills/:id    → SkillDetail
-// #/docs          → Docs
-// #/docs/:section → Docs (specific section)
+// /  → Home (all sections on one page)
+// Shareable state via query params: ?skill=<id>&project=<type>
 ```
 
-Hash routing means no 404 issues on GitHub Pages — the server always serves
-`index.html` and React Router handles the rest client-side.
+`BrowserRouter` uses `basename={import.meta.env.BASE_URL}` for GitHub Pages subpath deploys.
+`SkillUrlSync` keeps `?skill=` and `?project=` in sync with context (including back/forward).
+
+---
+
+## REMOVED LEGACY FILES (v2 cleanup)
+
+The following were unreachable dead code and have been deleted:
+
+- `src/styles.css` (642 lines, never imported)
+- `src/pages/Skills.jsx`, `SkillDetail.jsx`, `Docs.jsx` (no routes registered)
+- `src/components/Navigation.jsx`, `Footer.jsx`, `SkillCard.jsx`, `CopyButton.jsx`
+- `src/data/skills.js` (legacy data; site uses `src/skills/index.js`)
+- `src/App.css` (Vite boilerplate, never imported)
+- Empty dirs: `src/skills/registered/botanical-organic/`, `default/`
 
 ---
 
@@ -604,6 +523,17 @@ Hash routing means no 404 issues on GitHub Pages — the server always serves
 ```js
 export default defineConfig({
   plugins: [react()],
+  resolve: { alias: { '@': path.resolve(__dirname, './src') } },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-motion': ['framer-motion'],
+          'vendor-router': ['react-router-dom'],
+        },
+      },
+    },
+  },
 })
 ```
 

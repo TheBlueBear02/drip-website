@@ -1,0 +1,118 @@
+.skill-switcher-type-anchor-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.skill-switcher-type-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 1px solid var(--site-accent);
+  border-radius: 0;
+  color: var(--site-accent);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--site-font-body);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--site-duration-sm) var(--site-ease),
+    border-color var(--site-duration-sm) var(--site-ease),
+    box-shadow var(--site-duration-sm) var(--site-ease);
+}
+
+.skill-switcher-type-anchor:hover,
+.skill-switcher-type-anchor--open {
+  background-color: transparent;
+  box-shadow: var(--site-shadow-sm);
+}
+
+.skill-switcher-type-anchor-label {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.skill-switcher-type-chevron {
+  flex-shrink: 0;
+  transition: transform var(--site-duration-sm) var(--site-ease);
+}
+
+.skill-switcher-type-chevron--open {
+  transform: rotate(180deg);
+}
+
+.skill-switcher-type-anchor--enter {
+  animation: skill-type-slide-in 0.45s cubic-bezier(0.34, 1.25, 0.64, 1) both;
+}
+
+@keyframes skill-type-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(50vw - 50% - 24px));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.skill-switcher-type-menu {
+  min-width: 180px;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background-color: var(--site-surface);
+  border: 1px solid var(--site-border);
+  border-radius: 0;
+  box-shadow: var(--site-shadow-md);
+}
+
+.skill-switcher-type-menu--portal {
+  position: fixed;
+  z-index: 110;
+}
+
+.skill-switcher-type-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--site-text-muted);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--site-font-body);
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background-color var(--site-duration-sm) var(--site-ease),
+    color var(--site-duration-sm) var(--site-ease);
+}
+
+.skill-switcher-type-option:hover {
+  background-color: var(--site-surface-2);
+  color: var(--site-text);
+}
+
+.skill-switcher-type-option--active {
+  color: var(--site-accent);
+  background-color: var(--site-surface-2);
+}
+
+html[data-skill="linear-modern"] .skill-switcher-strip {
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-skill="linear-modern"] .skill-switcher-type-anchor,
+html[data-skill="linear-modern"] .skill-switcher-type-menu {
+  border-color: rgba(255, 255, 255, 0.22);
+}

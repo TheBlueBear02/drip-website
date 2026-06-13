@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useSkillContext } from '../context/SkillContext';
-import { parseHeroTypeParam, PROJECT_URL_PARAM } from '../data/heroTypes';
+import { useSkillContext } from '@/context/SkillContext';
+import { parseHeroTypeParam, PROJECT_URL_PARAM } from '@/data/heroTypes';
 
 /**
  * Keeps the selected project type in sync with ?project= in the URL.

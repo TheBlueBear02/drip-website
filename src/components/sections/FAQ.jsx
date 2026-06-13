@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useSkillContext } from '../../context/SkillContext';
-import { resolveSkillId } from '../../utils/resolveSkill';
-import { useInView } from '../../hooks/useInView';
+import { useSkillContext } from '@/context/SkillContext';
+import { resolveSkillId } from '@/utils/resolveSkill';
+import { useInView } from '@/hooks/useInView';
 import './FAQ.css';
 
 const FAQ_ITEMS = [

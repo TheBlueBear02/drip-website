@@ -1,4 +1,4 @@
-import { skillThemes } from '../skills';
+import { skillThemes } from '@/skills';
 
 export const BRAND_SKILL_ID = 'getdrip-brand';
 export const FEATURED_SKILL_ID = 'linear-modern';

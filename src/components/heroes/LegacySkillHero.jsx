@@ -1,4 +1,4 @@
-import CopyCommand from '../ui/CopyCommand';
+import CopyCommand from '@/components/ui/CopyCommand';
 
 function formatSkillName(skillId) {
   return skillId.replace(/-/g, ' ');

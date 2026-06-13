@@ -1,4 +1,4 @@
-import { useInView } from '../../hooks/useInView';
+import { useInView } from '@/hooks/useInView';
 import './Footer.css';
 
 function Footer() {
@@ -18,7 +18,7 @@ function Footer() {
             <a href="https://www.npmjs.com/package/getdrip" target="_blank" rel="noopener noreferrer">
               npm
             </a>
-            <a href="#how-it-works">It's Never Been Easier</a>
+            <a href="#how-it-works">How it works</a>
             <a href="#skills">Design systems</a>
             <a
               href="https://github.com/TheBlueBear02/drip-cli/issues"

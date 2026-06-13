@@ -1,5 +1,5 @@
-import { useSkillUrlSync } from '../hooks/useSkillUrlSync';
-import { useHeroTypeUrlSync } from '../hooks/useHeroTypeUrlSync';
+import { useSkillUrlSync } from '@/hooks/useSkillUrlSync';
+import { useHeroTypeUrlSync } from '@/hooks/useHeroTypeUrlSync';
 
 function SkillUrlSync() {
   useSkillUrlSync();

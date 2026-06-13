@@ -1,5 +1,5 @@
-import { userRecommendations } from '../../data/userRecommendations';
-import { useInView } from '../../hooks/useInView';
+import { userRecommendations } from '@/data/userRecommendations';
+import { useInView } from '@/hooks/useInView';
 import './UserRecommendations.css';
 
 function getInitials(name) {
