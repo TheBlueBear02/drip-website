@@ -10,7 +10,7 @@
 #skills,
 #platforms,
 #faq {
-  scroll-margin-top: 160px;
+  scroll-margin-top: 140px;
   transition: scroll-margin-top 0.45s var(--site-ease, ease);
 }
 
@@ -19,7 +19,7 @@ html.skill-strip-collapsed #how-it-works,
 html.skill-strip-collapsed #skills,
 html.skill-strip-collapsed #platforms,
 html.skill-strip-collapsed #faq {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 80px;
 }
 
 /* Brand: GET smaller, DRIP larger */

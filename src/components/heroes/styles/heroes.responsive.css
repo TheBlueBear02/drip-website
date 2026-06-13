@@ -75,6 +75,62 @@
     grid-template-columns: 1fr;
   }
 
+  .mock-dashboard {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .mock-dashboard-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-right: none;
+    border-bottom: 1px solid var(--mock-dash-border);
+  }
+
+  .mock-dashboard-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .mock-dashboard-nav-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mock-dashboard-nav-label,
+  .mock-dashboard-sidebar-footer {
+    display: none;
+  }
+
+  .mock-dashboard-nav-item {
+    padding: 4px 8px;
+    font-size: 9px;
+  }
+
+  .mock-dashboard-topbar {
+    flex-wrap: wrap;
+  }
+
+  .mock-dashboard-user-meta {
+    display: none;
+  }
+
+  .mock-dashboard-mid-grid,
+  .mock-dashboard-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-preview-layout--dashboard .hero-preview-split {
+    grid-template-columns: 1fr;
+  }
+
   .mock-portfolio-intro {
     flex-direction: column;
     align-items: center;

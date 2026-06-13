@@ -289,8 +289,10 @@ The entry point. Default state uses **getDRIP brand** (light, DM Sans typography
 ```
 Nav
   └── Logo (GETDRIP + Beta) — links to `/`, resets to getDRIP brand default (`setActiveSkill(null)`, `setPreviewSkill(null)`), scrolls to top | How it works | Skills | Platforms | Q&A | GitHub stars | "Browse all designs" CTA
+  └── No bottom border while the designs strip is visible; when the strip collapses on scroll, `html.skill-strip-collapsed .nav` shows a bottom border so the sticky header still separates from page content
 
 SkillSwitcherStrip
+  └── `border-top` + `border-bottom` (`--site-border-strong`) — top edge divides main nav from designs row; bottom edge is the header’s lower boundary above hero/sections
   └── Step 1 (project type): `"I'm building:"` label + row of 4 chips from `heroTypeList` in `src/data/heroTypes.js` — Dashboard, Landing page, SaaS site, Portfolio; click → `selectProjectType(id)` and advance to step 2
   └── Step 2 (styles): type anchor (accent outline + chevron, transparent background, `--site-radius-md` corners); dropdown portaled to `document.body` with fixed positioning so it renders over the hero (not clipped by `site-header` / strip `overflow`); lists all 4 types to switch without leaving styles view (`selectProjectType` only); changing type scrolls smoothly to `#home` hero
   └── Style chips (step 2 only): first chip house icon (resets to brand default; siteOnly) + installable library skills from `skillList` in `src/skills/index.js`: clay-premium → linear-modern → neo-brutalism → minimalist-monochrome → playful-geometric → art-deco → hand-drawn
@@ -309,7 +311,7 @@ Hero
       ├── Registry (`heroTypeList`): `dashboard`, `landing`, `saas`, `portfolio` — each maps to a component in `src/components/heroes/`
       ├── `DEFAULT_HERO_TYPE = 'dashboard'`; `SkillContext.activeHeroType` set via hero project-type chips or navbar type dropdown (`selectProjectType`)
       ├── Shared preview copy (`HeroPreviewCopy.jsx`): title "This Is How Your Project Could Look Like"; subtitle names active skill + install-command CTA
-      ├── Active now: `DashboardHero` — split layout (copy left, KPIs + bar chart + activity mock right) + `HeroPreviewHeader` (eyebrow + install command)
+      ├── Active now: `DashboardHero` — split layout (copy left, Nexus-style dashboard mock right) + `HeroPreviewHeader` (eyebrow + install command); mock (`MockNexusDashboard.jsx`): sidebar nav (General/Tools/Support), top bar (search, actions, user), KPI row, sales stack chart + subscriber bars, sales distribution donut + integrations table
       ├── Built, dormant: `SaasSiteHero` (browser mock + feature cards), `LandingPageHero` (centered + logo strip), `PortfolioHero` (project grid mock)
       ├── `LegacySkillHero.jsx` preserved ("See how your app could look") — swap in via `heroTypes.js` for comparison, not wired by default
       ├── Mobile/tablet (≤900px): preview split stacks; install `CopyCommand` and mock CTA buttons (`hero-preview-cta-row`) span full width with ellipsis on long commands; no horizontal overflow
@@ -370,6 +372,7 @@ Footer              ← GitHub, npm, anchors, GitHub Issues contact
 - Platform copy: "Works in any React project" — no "seamlessly with your favorite platforms"
 
 **The SkillSwitcherStrip** — key UX detail:
+- **Chrome:** `border-top` separates the strip from the main nav; `border-bottom` closes the sticky header above page content — both use `--site-border-strong` for clearer separation on white; borders animate to `0` when collapsed; main nav then carries the bottom border via `html.skill-strip-collapsed .nav`
 - **Step 1:** pick project type (dashboard / landing / SaaS / portfolio) from `heroTypeList`; advances to step 2 with slide-to-left animation; `"I'm building:"` label uses `--site-text` at 14px/600; project-type chips (`.skill-chip--project-type`) use `--site-radius-md`, `--site-surface` background, darker border, and light shadow so they read clearly against the strip; on mobile (≤768px) the label stacks above a full-width horizontally scrollable chip row (strip `max-height` increases to ~108px); chips use a right-edge fade mask to hint overflow
 - **Step 2:** type anchor on the left (dropdown to change type; transparent background with accent border, `--site-radius-md` corners); horizontally scrollable style chips on the right — shows default (Home) chip plus first 6 library skills from `skillList` (`SKILL_STRIP_VISIBLE_COUNT` in `src/skills/index.js`); remaining skills reachable via "See more"; short vertical dividers (`--site-border`, 14px) between style chips via `.skill-chip + .skill-chip::before`; Home chip (`.skill-chip--brand`) is borderless and transparent with a hover underline via `.skill-chip-icon-wrap::after` below the icon; other style chips (`.skill-switcher-scroll .skill-chip`) are borderless and transparent, with hover underline on the label (`.skill-chip-name`) instead of a background change; active chip uses accent text color; on first transition from step 1, the type anchor slides in from center; style chips stagger-slide in left-to-right (`.skill-switcher-scroll--enter`) on first transition and again whenever the user picks a different type from the dropdown
 - Click default chip = `setActiveSkill(null)` (brand default)

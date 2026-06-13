@@ -6,10 +6,10 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: var(--site-radius-lg);
+  border-radius: 0;
   overflow: hidden;
   border: 1px solid var(--site-border);
-  box-shadow: var(--site-shadow-lg);
+  box-shadow: none;
   background-color: var(--site-surface);
 }
 

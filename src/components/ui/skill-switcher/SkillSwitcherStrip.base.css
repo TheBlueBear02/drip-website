@@ -1,8 +1,8 @@
 .skill-switcher-strip {
   z-index: 40;
   background-color: var(--site-surface);
-  border-top: 1px solid var(--site-border);
-  border-bottom: 1px solid var(--site-border);
+  border-top: 1px solid var(--site-border-strong);
+  border-bottom: 1px solid var(--site-border-strong);
   padding: 10px 0 8px;
   overflow: hidden;
   max-height: 72px;
