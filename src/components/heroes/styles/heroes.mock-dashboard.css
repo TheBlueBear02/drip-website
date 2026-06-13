@@ -689,7 +689,6 @@
 .mock-dashboard-rate {
   display: block;
   width: 100%;
-  max-width: 56px;
   height: 5px;
   border-radius: 999px;
   background: var(--site-surface-2);
@@ -699,6 +698,7 @@
 .mock-dashboard-rate-bar {
   display: block;
   height: 100%;
+  min-width: 3px;
   border-radius: inherit;
   background: linear-gradient(
     to right,
@@ -710,4 +710,75 @@
 .mock-dashboard-profit {
   font-weight: 700;
   white-space: nowrap;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Integrations table — fixed columns so rate bars and profit stay in bounds */
+
+.mock-dashboard-card--integrations {
+  padding: 10px;
+  overflow: hidden;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-card-header {
+  margin-bottom: 8px;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table {
+  table-layout: fixed;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th,
+.mock-dashboard-card--integrations .mock-dashboard-table td {
+  padding-left: 0;
+  padding-right: 2px;
+  overflow: hidden;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th:first-child,
+.mock-dashboard-card--integrations .mock-dashboard-table td:first-child {
+  width: 23%;
+  padding-right: 4px;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th:nth-child(2),
+.mock-dashboard-card--integrations .mock-dashboard-table td:nth-child(2) {
+  width: 30%;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th:nth-child(3),
+.mock-dashboard-card--integrations .mock-dashboard-table td:nth-child(3) {
+  width: 27%;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th:last-child,
+.mock-dashboard-card--integrations .mock-dashboard-table td:last-child {
+  width: 20%;
+  padding-right: 0;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th:nth-child(3) {
+  padding-left: 2px;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-table th:last-child {
+  text-align: right;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-type-pill {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-rate {
+  max-width: 100%;
+}
+
+.mock-dashboard-card--integrations .mock-dashboard-profit {
+  padding-right: 0;
 }

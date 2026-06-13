@@ -109,7 +109,6 @@
 
 html[data-skill="linear-modern"] .skill-switcher-strip {
   border-top-color: rgba(255, 255, 255, 0.22);
-  border-bottom-color: rgba(255, 255, 255, 0.22);
 }
 
 html[data-skill="linear-modern"] .skill-switcher-type-anchor,

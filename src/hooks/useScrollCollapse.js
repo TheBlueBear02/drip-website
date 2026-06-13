@@ -46,10 +46,20 @@ export function useScrollCollapse({
       }
     };
 
+    const onLayout = () => {
+      if (window.scrollY <= topOffset) {
+        setIsCollapsed(false);
+      }
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onLayout, { passive: true });
     update();
 
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onLayout);
+    };
   }, [threshold, topOffset]);
 
   return isCollapsed;

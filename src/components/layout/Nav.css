@@ -3,6 +3,19 @@
   top: 0;
   z-index: 100;
   overflow: hidden;
+  box-shadow: 0 1px 0 var(--site-border-strong);
+}
+
+html.skill-strip-collapsed .site-header {
+  box-shadow: none;
+}
+
+html[data-skill='linear-modern']:not(.skill-strip-collapsed) .site-header {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+html[data-skill='frosted-obsidian']:not(.skill-strip-collapsed) .site-header {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .nav {

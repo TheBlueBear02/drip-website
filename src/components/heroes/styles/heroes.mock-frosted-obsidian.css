@@ -186,6 +186,10 @@ html[data-skill='frosted-obsidian'] .skill-switcher-strip {
   -webkit-backdrop-filter: blur(40px);
 }
 
+html[data-skill='frosted-obsidian'] .skill-switcher-strip {
+  border-top-color: rgba(255, 255, 255, 0.28);
+}
+
 html[data-skill='frosted-obsidian'] .skill-chip-active {
   color: #ffffff;
 }

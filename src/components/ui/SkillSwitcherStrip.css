@@ -1,5 +1,6 @@
 @import './skill-switcher/SkillSwitcherStrip.base.css';
 @import './skill-switcher/SkillSwitcherStrip.project-type.css';
+@import './skill-switcher/SkillSwitcherStrip.styles.css';
 @import './skill-switcher/SkillSwitcherStrip.type-menu.css';
 @import './skill-switcher/SkillSwitcherStrip.chips.css';
 @import './skill-switcher/SkillSwitcherStrip.responsive.css';
