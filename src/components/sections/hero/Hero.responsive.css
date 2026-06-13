@@ -9,6 +9,10 @@
     text-align: center;
   }
 
+  .hero--brand-intro {
+    padding-top: 96px;
+  }
+
   .hero-split {
     grid-template-columns: 1fr;
     gap: 32px;
@@ -72,19 +76,16 @@
 
   .hero--neo-brutalism,
   .hero--hand-drawn,
-  .hero--playful-geometric {
-    padding-top: 28px;
-  }
-
+  .hero--playful-geometric,
   .hero--brand-dashboard,
   .hero--brand-landing,
   .hero--brand-saas,
   .hero--brand-portfolio,
-  .hero.hero-preview--dashboard:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn),
-  .hero.hero-preview--landing:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn),
-  .hero.hero-preview--saas:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn),
-  .hero.hero-preview--portfolio:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn) {
-    padding-top: 28px;
+  .hero.hero-preview--dashboard,
+  .hero.hero-preview--landing,
+  .hero.hero-preview--saas,
+  .hero.hero-preview--portfolio {
+    padding-top: 64px;
   }
 
   .hero--playful-geometric .hero-card {

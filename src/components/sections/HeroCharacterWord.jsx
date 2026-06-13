@@ -3,11 +3,13 @@ import { skillList, skillThemes } from '@/skills';
 
 const CHARACTER_STYLES = skillList.map((meta) => {
   const theme = skillThemes[meta.id];
+  const tokens = theme.tokens;
   return {
     id: meta.id,
-    color: theme.tokens['--site-accent'],
-    fontFamily: theme.tokens['--site-font-head'],
-    fontWeight: theme.tokens['--site-hero-headline-weight'] || '600',
+    // Prefer hero shape color — some dark themes use white for --site-accent (e.g. frosted-obsidian)
+    color: tokens['--site-hero-shape-1'] || tokens['--site-accent'],
+    fontFamily: tokens['--site-font-head'],
+    fontWeight: tokens['--site-hero-headline-weight'] || '600',
   };
 });
 

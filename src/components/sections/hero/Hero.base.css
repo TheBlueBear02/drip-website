@@ -13,6 +13,11 @@
   text-align: left;
 }
 
+/* Default getDRIP intro (video hero) — generous top spacing; project-type heroes override in Hero.brand-types.css */
+.hero--brand-intro {
+  padding-top: 98px;
+}
+
 .hero-split {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
