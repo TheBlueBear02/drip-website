@@ -1,0 +1,44 @@
+{
+  "name": "aurora-soft",
+  "version": "1.0.0",
+  "description": "A bright, light SaaS analytics dashboard where saturated color lives only inside the data — an indigo→violet→blue→teal gradient spectrum in charts — while the chrome stays neutral white-on-cool-grey.",
+  "category": "light",
+  "projectType": "dashboard",
+  "projectTypeLabel": "Dashboard",
+  "mood": ["vibrant", "gradient", "airy", "friendly", "polished", "energetic"],
+  "stack": ["react", "tailwind", "recharts", "framer-motion", "lucide-react"],
+  "dependencies": {
+    "recharts": "^2.12.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "^0.400.0"
+  },
+  "devDependencies": {},
+  "author": "getdrip",
+  "preview": "https://getdrip.dev/skills/aurora-soft",
+  "docs": "https://getdrip.dev/docs/aurora-soft",
+  "components": 6,
+  "tags": ["dashboard", "analytics", "light", "gradient", "saas", "kpi"],
+  "palette": {
+    "background": "#F3F4F7",
+    "foreground": "#16181F",
+    "accent": "#5347CE",
+    "muted": "#9AA1B1",
+    "border": "#ECEEF2"
+  },
+  "fonts": {
+    "heading": "SF Pro Display",
+    "body": "SF Pro Display"
+  },
+  "signature_traits": [
+    "Saturated color appears ONLY inside charts (the four-stop spectrum #5347CE/#887CFD/#4896FE/#16C8C7); the chrome carries no saturated color except the single indigo accent.",
+    "Indigo #5347CE is the only interactive color in the entire UI — there is no second chrome accent, and spectrum hues never touch a button, link, border, or background.",
+    "Bar charts use the focal-bar pattern: the bar in focus gets the gradient fill, every other bar falls back to #F8F9FB grey.",
+    "Cards are flat white on a cool-grey #F3F4F7 canvas, separated by a 1px #ECEEF2 hairline plus one 4%-opacity shadow — never colored backgrounds, never heavy drop shadows.",
+    "Trend deltas render as fully-rounded tinted pills (green or rose soft background) prefixed with ↗ / ↘ arrow glyphs — never bare colored text, never triangles.",
+    "Numbers use SF Pro Display with font-variant-numeric: tabular-nums — there is no separate monospace font; tabular figures do the anti-jitter job instead.",
+    "Metric-to-label hierarchy is fixed at 2:1, reinforced by three stacked signals: larger size, SemiBold weight, and primary contrast on the value vs Medium secondary on the label.",
+    "The sidebar is white like the cards with a hairline divider, and the active nav item uses an #EDEBFB lavender soft-fill — never a solid indigo block — so navigation recedes below content.",
+    "Spacing runs three explicit density tiers in one view: 24px KPI cards, 20px panels, 44px table rows — never uniform padding.",
+    "Recharts defaults are always overridden: custom white tooltip, hidden Y-axis, horizontal gridlines only, spectrum gradient fills — never the library's default palette or vertical gridlines."
+  ]
+}

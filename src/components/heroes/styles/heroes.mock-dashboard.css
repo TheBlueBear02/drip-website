@@ -6,7 +6,7 @@
 }
 
 .mock-dashboard {
-  --mock-dash-bg: color-mix(in srgb, var(--site-bg) 92%, var(--site-text) 8%);
+  --mock-dash-bg: var(--site-bg);
   --mock-dash-sidebar-bg: var(--site-surface);
   --mock-dash-card-bg: var(--site-surface);
   --mock-dash-text: var(--site-hero-text, var(--site-text));
@@ -119,9 +119,23 @@
   opacity: 0.55;
 }
 
+.mock-dashboard-nav-icon:not(span) {
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  background: none;
+  color: var(--mock-dash-muted);
+  opacity: 1;
+}
+
 .mock-dashboard-nav-item--active .mock-dashboard-nav-icon {
   background: var(--mock-dash-accent);
   opacity: 1;
+}
+
+.mock-dashboard-nav-item--active .mock-dashboard-nav-icon:not(span) {
+  background: none;
+  color: var(--mock-dash-accent-fg, #fff);
 }
 
 .mock-dashboard-nav-badge {
@@ -485,15 +499,24 @@
   width: 100%;
   max-width: 42px;
   height: 100%;
-  gap: 2px;
+  gap: 0;
 }
 
 .mock-dashboard-sales-segment {
   display: block;
   width: 100%;
-  border-radius: 3px;
-  min-height: 4px;
+  flex: 1 1 0;
+  min-height: 3px;
+  border-radius: 0;
   animation: mock-bar-grow 0.8s var(--site-ease, ease) both;
+}
+
+.mock-dashboard-sales-stack .mock-dashboard-sales-segment:first-child {
+  border-radius: 0 0 3px 3px;
+}
+
+.mock-dashboard-sales-stack .mock-dashboard-sales-segment:last-child {
+  border-radius: 3px 3px 0 0;
 }
 
 .mock-dashboard-sales-month {
@@ -550,7 +573,7 @@
   width: 100%;
   height: var(--bar-height, 50%);
   border-radius: 4px 4px 0 0;
-  background: color-mix(in srgb, var(--mock-dash-text) 10%, var(--mock-dash-bg));
+  background: var(--site-surface-2);
   animation: mock-bar-grow 0.8s var(--site-ease, ease) both;
 }
 
@@ -618,7 +641,7 @@
   background: conic-gradient(
     var(--mock-dash-stack-1) 0deg 130deg,
     var(--mock-dash-stack-4) 130deg 220deg,
-    color-mix(in srgb, var(--mock-dash-text) 12%, var(--mock-dash-bg)) 220deg 360deg
+    var(--site-surface-2) 220deg 360deg
   );
   mask: radial-gradient(circle, transparent 52%, #000 53%);
   -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%);
@@ -658,7 +681,7 @@
   display: inline-block;
   padding: 2px 6px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--mock-dash-text) 6%, var(--mock-dash-bg));
+  background: var(--site-surface-2);
   font-size: 8px;
   color: var(--mock-dash-muted);
 }
@@ -669,7 +692,7 @@
   max-width: 56px;
   height: 5px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--mock-dash-text) 8%, var(--mock-dash-bg));
+  background: var(--site-surface-2);
   overflow: hidden;
 }
 

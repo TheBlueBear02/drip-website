@@ -131,6 +131,22 @@
     grid-template-columns: 1fr;
   }
 
+  .hero-preview-layout--landing .hero-preview-split {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-landing-page-main {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-landing-page-phone {
+    display: none;
+  }
+
+  .mock-landing-page-visual {
+    min-height: 260px;
+  }
+
   .mock-portfolio-intro {
     flex-direction: column;
     align-items: center;

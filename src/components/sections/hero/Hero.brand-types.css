@@ -1,0 +1,94 @@
+/* Brand default hero — project-type media panels */
+
+.hero--brand-dashboard,
+.hero--brand-landing,
+.hero--brand-saas,
+.hero--brand-portfolio {
+  padding-top: 40px;
+}
+
+.brand-hero-media-wrap {
+  width: 100%;
+  min-width: 0;
+  animation: brand-hero-media-enter 0.45s var(--site-ease, ease) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-hero-media-wrap {
+    animation: none;
+  }
+}
+
+@keyframes brand-hero-media-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.brand-hero-media {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Dashboard */
+
+.hero--brand-dashboard .hero-split {
+  grid-template-columns: 0.92fr 1.25fr;
+  align-items: start;
+}
+
+.hero--brand-dashboard .brand-hero-media--dashboard .mock-dashboard {
+  min-height: 400px;
+}
+
+/* Landing */
+
+.hero--brand-landing .hero-split {
+  grid-template-columns: 0.85fr 1.2fr;
+  align-items: center;
+}
+
+.brand-hero-media--landing {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0;
+}
+
+/* SaaS */
+
+.hero--brand-saas .hero-split {
+  align-items: center;
+}
+
+.brand-hero-media--saas .mock-browser {
+  width: 100%;
+}
+
+/* Portfolio */
+
+.hero--brand-portfolio .hero-split {
+  align-items: start;
+}
+
+.brand-hero-media--portfolio .mock-portfolio-grid {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .hero--brand-dashboard .hero-split,
+  .hero--brand-landing .hero-split,
+  .hero--brand-saas .hero-split,
+  .hero--brand-portfolio .hero-split {
+    grid-template-columns: 1fr;
+  }
+
+  .hero--brand-dashboard .brand-hero-media--dashboard .mock-dashboard {
+    min-height: auto;
+  }
+}

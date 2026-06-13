@@ -213,6 +213,11 @@ getdrip-site/
 │   │   │   └── art-deco/            ← Obsidian + gold, Marcellus + Josefin Sans, crosshatch body, gold glows, 0px radius
 │   │   │       ├── theme.js
 │   │   │       └── meta.js
+│   │   │   ├── aurora-soft/         ← Light dashboard, indigo→teal chart spectrum
+│   │   │   ├── analytics-dark/      ← Dark command-center dashboard
+│   │   │   └── frosted-obsidian/    ← Glassmorphism dashboard, Plus Jakarta Sans, white active states, scene gradient body
+│   │   │       ├── theme.js
+│   │   │       └── meta.js
 │   │
 │   ├── components/                 ← Site UI components (all use CSS vars)
 │   │   ├── SkillUrlSync.jsx        ← Composes useSkillUrlSync + useHeroTypeUrlSync
@@ -240,12 +245,14 @@ getdrip-site/
 │   │   │   ├── DashboardHero.jsx
 │   │   │   ├── LandingPageHero.jsx
 │   │   │   ├── PortfolioHero.jsx
+│   │   │   ├── brand/
+│   │   │   │   └── BrandHeroMedia.jsx  ← Brand-default project-type mocks (dashboard, landing, saas, portfolio)
 │   │   │   ├── heroes.css          ← Aggregator importing styles/*.css
 │   │   │   ├── styles/             ← Split hero preview CSS (preview, mocks, responsive)
-│   │   │   └── mock/                   ← MockBrowserChrome, MockKpi, MockBarChart, MockProjectTile
+│   │   │   └── mock/                   ← MockNexusDashboard, MockMarketeamLanding, MockBrowserChrome, MockKpi, MockBarChart, MockProjectTile
 │   │   └── sections/
 │   │       ├── Hero.jsx
-│   │       ├── hero/               ← Split Hero CSS (base, variants, responsive)
+│   │       ├── hero/               ← Split Hero CSS (base, variants, brand-types, responsive)
 │   │       ├── HowItWorks.jsx
 │   │       ├── SkillsPreview.jsx
 │   │       ├── PlatformSupport.jsx
@@ -295,24 +302,25 @@ SkillSwitcherStrip
   └── `border-top` + `border-bottom` (`--site-border-strong`) — top edge divides main nav from designs row; bottom edge is the header’s lower boundary above hero/sections
   └── Step 1 (project type): `"I'm building:"` label + row of 4 chips from `heroTypeList` in `src/data/heroTypes.js` — Dashboard, Landing page, SaaS site, Portfolio; click → `selectProjectType(id)` and advance to step 2
   └── Step 2 (styles): type anchor (accent outline + chevron, transparent background, `--site-radius-md` corners); dropdown portaled to `document.body` with fixed positioning so it renders over the hero (not clipped by `site-header` / strip `overflow`); lists all 4 types to switch without leaving styles view (`selectProjectType` only); changing type scrolls smoothly to `#home` hero
-  └── Style chips (step 2 only): first chip house icon (resets to brand default; siteOnly) + installable library skills from `skillList` in `src/skills/index.js`: clay-premium → linear-modern → neo-brutalism → minimalist-monochrome → playful-geometric → art-deco → hand-drawn
-  └── All styles shown for every project type (no per-type filtering yet)
+  └── Style chips (step 2 only): first chip house icon (resets to brand default; siteOnly) + installable library skills from `skillList` filtered by `getSkillsForProjectType(activeHeroType)` in `src/skills/index.js` — skills in `skills/{projectType}/` (e.g. `skills/dashboard/`) set `projectType` on meta; root-level skills show for landing, saas, and portfolio only
+  └── Per-type filtering: dashboard → frosted-obsidian, aurora-soft, analytics-dark; landing/saas/portfolio → clay-premium through hand-drawn (root skills); switching project type clears `activeSkill` when it is not in the filtered set
   └── Step 1 → 2 transition: hero chips call `selectProjectTypeFromHero` → one frame on step 1 (active chip highlighted) then `SkillSwitcherStrip` advances to step 2 with anchor slide-in + style-chip stagger; navbar step 1 chips use the same animation via `handleTypeSelect`; already on step 2, hero type change replays chip stagger only; `?project=` URL loads on step 2 without replaying hero animation
   └── Scroll: collapses upward when scrolling down (`useScrollCollapse`); drops back in with slight bounce when scrolling up or near top; `html.skill-strip-collapsed` tightens anchor scroll-margin
 
 Hero
-  └── Brand default (getdrip-brand): split layout — copy left, HeroVideo right
-      ├── Eyebrow: "Design systems for AI-built apps"
+  └── Brand default (getdrip-brand): split layout — copy left, media right
+      ├── Before project type is selected (`!hasSelectedProjectType`): `HeroVideo` demo on the right
+      ├── After project type selection: `BrandHeroMedia` swaps archetype mocks by `activeHeroType` — dashboard (`MockNexusDashboard`), landing (`MockMarketeamLanding`: getDRIP-branded real-estate hero — split copy + scenic image with floating cards; colors/fonts/radius/shadows follow active `--site-*` tokens from skill strip, including brand default), SaaS (`MockBrowserChrome` + feature cards), portfolio (`MockProjectTile` grid); `hero--brand-{type}` modifiers + `Hero.brand-types.css`
       ├── Headline: "Your AI app works / now give it character" — `HeroCharacterWord` cycles library skills every 7s (`skillList` order): accent color + heading font from each theme; slide-up enter animation on change; preloads skill font URLs; fixed-width slot (max measured width) + `white-space: nowrap` on second line to prevent wrap on font change
-      ├── `"I'm building:"` label + `HeroProjectTypes` — same 4 chips as navbar step 1; click → `selectProjectTypeFromHero(id)` syncs type, highlights chip, then animates navbar to step 2 (designs)
+      ├── `"I'm building:"` label + `HeroProjectTypes` — same 4 chips as navbar step 1; click → `selectProjectTypeFromHero(id)` syncs type, highlights chip, swaps brand hero media, then animates navbar to step 2 (designs)
       └── HeroVideo: `VITE_DEMO_VIDEO_URL` in `.env` (not `.env.example`); YouTube/Vimeo embed or file under `public/` (path must match filename exactly, e.g. `proof/getDrip-example-video.mp4`); local paths resolved with `import.meta.env.BASE_URL`; wrong path may return SPA HTML (200) instead of 404 — video shows blank; `onError` shows load hint; restart dev server after env change; poster/thumbnail uses `public/proof/after.png` (same as Before/After “with skill” panel); dark scrim + centered circular play button overlay until first play (embeds lazy-load on click with autoplay); overlay returns when direct video ends
   └── Library skill active: project-type hero archetypes via `SkillHeroShell` + `src/data/heroTypes.js`
       ├── Two axes: **skill** (theme tokens + `hero--{skill}` modifiers) × **hero type** (layout + mock UI)
       ├── Registry (`heroTypeList`): `dashboard`, `landing`, `saas`, `portfolio` — each maps to a component in `src/components/heroes/`
       ├── `DEFAULT_HERO_TYPE = 'dashboard'`; `SkillContext.activeHeroType` set via hero project-type chips or navbar type dropdown (`selectProjectType`)
       ├── Shared preview copy (`HeroPreviewCopy.jsx`): title "This Is How Your Project Could Look Like"; subtitle names active skill + install-command CTA
-      ├── Active now: `DashboardHero` — split layout (copy left, Nexus-style dashboard mock right) + `HeroPreviewHeader` (eyebrow + install command); mock (`MockNexusDashboard.jsx`): sidebar nav (General/Tools/Support), top bar (search, actions, user), KPI row, sales stack chart + subscriber bars, sales distribution donut + integrations table
-      ├── Built, dormant: `SaasSiteHero` (browser mock + feature cards), `LandingPageHero` (centered + logo strip), `PortfolioHero` (project grid mock)
+      ├── Active now: `DashboardHero` — split layout (copy left, Nexus-style dashboard mock right) + `HeroPreviewHeader` (eyebrow + install command); mock (`MockNexusDashboard.jsx`): sidebar nav (General/Tools/Support), top bar (search, actions, user), KPI row, sales stack chart + subscriber bars, sales distribution donut + integrations table; `frosted-obsidian` applies glass overrides via `heroes.mock-frosted-obsidian.css` (`html[data-skill="frosted-obsidian"]`) — floating pill sidebar, translucent panels, scene gradient behind mock
+      ├── Built, dormant: `SaasSiteHero` (browser mock + feature cards), `LandingPageHero` (split layout like `DashboardHero` — copy left, theme-aware `MockMarketeamLanding` right), `PortfolioHero` (project grid mock)
       ├── `LegacySkillHero.jsx` preserved ("See how your app could look") — swap in via `heroTypes.js` for comparison, not wired by default
       ├── Mobile/tablet (≤900px): preview split stacks; install `CopyCommand` and mock CTA buttons (`hero-preview-cta-row`) span full width with ellipsis on long commands; no horizontal overflow
       └── Per-skill shell decorations unchanged: clay blobs, playful shapes, neo/hand-drawn cards (`SkillHeroShell.jsx`); mock widgets use `--site-*` tokens
@@ -374,10 +382,10 @@ Footer              ← GitHub, npm, anchors, GitHub Issues contact
 **The SkillSwitcherStrip** — key UX detail:
 - **Chrome:** `border-top` separates the strip from the main nav; `border-bottom` closes the sticky header above page content — both use `--site-border-strong` for clearer separation on white; borders animate to `0` when collapsed; main nav then carries the bottom border via `html.skill-strip-collapsed .nav`
 - **Step 1:** pick project type (dashboard / landing / SaaS / portfolio) from `heroTypeList`; advances to step 2 with slide-to-left animation; `"I'm building:"` label uses `--site-text` at 14px/600; project-type chips (`.skill-chip--project-type`) use `--site-radius-md`, `--site-surface` background, darker border, and light shadow so they read clearly against the strip; on mobile (≤768px) the label stacks above a full-width horizontally scrollable chip row (strip `max-height` increases to ~108px); chips use a right-edge fade mask to hint overflow
-- **Step 2:** type anchor on the left (dropdown to change type; transparent background with accent border, `--site-radius-md` corners); horizontally scrollable style chips on the right — shows default (Home) chip plus first 6 library skills from `skillList` (`SKILL_STRIP_VISIBLE_COUNT` in `src/skills/index.js`); remaining skills reachable via "See more"; short vertical dividers (`--site-border`, 14px) between style chips via `.skill-chip + .skill-chip::before`; Home chip (`.skill-chip--brand`) is borderless and transparent with a hover underline via `.skill-chip-icon-wrap::after` below the icon; other style chips (`.skill-switcher-scroll .skill-chip`) are borderless and transparent, with hover underline on the label (`.skill-chip-name`) instead of a background change; active chip uses accent text color; on first transition from step 1, the type anchor slides in from center; style chips stagger-slide in left-to-right (`.skill-switcher-scroll--enter`) on first transition and again whenever the user picks a different type from the dropdown
+- **Step 2:** type anchor on the left (dropdown to change type; transparent background with accent border, `--site-radius-md` corners); horizontally scrollable style chips on the right — shows default (Home) chip plus library skills from `getSkillsForProjectType(activeHeroType)` (first `SKILL_STRIP_VISIBLE_COUNT`); remaining skills reachable via "See more"; short vertical dividers (`--site-border`, 14px) between style chips via `.skill-chip + .skill-chip::before`; Home chip (`.skill-chip--brand`) is borderless and transparent with a hover underline via `.skill-chip-icon-wrap::after` below the icon; other style chips (`.skill-switcher-scroll .skill-chip`) are borderless and transparent, with hover underline on the label (`.skill-chip-name`) instead of a background change; active chip uses accent text color; on first transition from step 1, the type anchor slides in from center; style chips stagger-slide in left-to-right (`.skill-switcher-scroll--enter`) on first transition and again whenever the user picks a different type from the dropdown
 - Click default chip = `setActiveSkill(null)` (brand default)
 - Click library chip = `setActiveSkill(id)` (switches full-site design)
-- All library styles visible for every project type until per-type filtering is added
+- Style chips filter by project type: `skills/dashboard/` skills (`projectType: 'dashboard'`) for Dashboard; root-level skills for Landing page, SaaS site, and Portfolio
 - Scroll down from top: strip collapses up under the nav; scroll up or return to top: strip drops back in
 - FloatingTab hides copy button on brand default; shows command for library skills
 
@@ -441,8 +449,10 @@ The standalone `/skills`, `/skills/:id`, and `/docs` routes and their page compo
 // Step 1: heroTypeList chips (Dashboard, Landing page, SaaS site, Portfolio)
 //   - onClick → selectProjectType(id) + setNavbarSwitcherStep('styles')
 // Step 2: left type anchor (dropdown to change activeHeroType) + scrollable style chips
+//   - style chips from getSkillsForProjectType(activeHeroType) (skills/{projectType}/ only for typed folders)
 //   - default chip → setActiveSkill(null)
 //   - library chips → setActiveSkill(id); active chip uses --site-accent text color
+//   - switching project type clears activeSkill when not in filtered set (retainActiveSkillForProjectType)
 // Hero chips → selectProjectTypeFromHero(id) → step 1 flash + animated advance to step 2
 // navbarSwitcherStep: 'project-type' | 'styles' (context; URL ?project= loads 'styles')
 // Local state: typeMenuOpen, anchorEntering (type anchor), stylesEntering (style chip stagger)

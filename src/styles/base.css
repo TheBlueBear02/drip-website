@@ -121,6 +121,12 @@ html[data-skill="art-deco"] body {
     );
 }
 
+/* Frosted Obsidian: cool atmospheric scene behind glass UI */
+html[data-skill="frosted-obsidian"] body {
+  background-image: linear-gradient(145deg, #0f1b2d 0%, #1a2744 50%, #0d1526 100%);
+  background-attachment: fixed;
+}
+
 html {
   background-color: var(--site-bg);
   scroll-behavior: smooth;

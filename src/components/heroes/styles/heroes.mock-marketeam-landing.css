@@ -1,0 +1,586 @@
+/* Real-estate landing page mock — theme-aware via --site-* tokens */
+
+.hero-preview-layout--landing .hero-preview-split {
+  grid-template-columns: 0.82fr 1.18fr;
+  align-items: center;
+}
+
+.mock-landing-page {
+  --mock-lp-bg: var(--site-bg);
+  --mock-lp-surface: var(--site-surface);
+  --mock-lp-text: var(--site-text);
+  --mock-lp-muted: var(--site-text-muted);
+  --mock-lp-accent: var(--site-accent);
+  --mock-lp-accent-2: var(--site-accent-2);
+  --mock-lp-btn-bg: var(--site-text);
+  --mock-lp-btn-fg: var(--site-surface, #ffffff);
+  --mock-lp-border: var(--site-border);
+
+  position: relative;
+  width: 100%;
+  min-height: 440px;
+  padding: 20px 22px 24px;
+  border-radius: var(--site-radius-lg, 24px);
+  border: 1px solid var(--mock-lp-border);
+  background: var(--mock-lp-bg);
+  box-shadow: var(--site-shadow-md);
+  font-family: var(--site-font-body);
+  color: var(--mock-lp-text);
+  overflow: hidden;
+  transition:
+    background var(--site-duration-md, 300ms) var(--site-ease, ease),
+    border-color var(--site-duration-md, 300ms) var(--site-ease, ease),
+    border-radius var(--site-duration-md, 300ms) var(--site-ease, ease),
+    box-shadow var(--site-duration-md, 300ms) var(--site-ease, ease),
+    color var(--site-duration-md, 300ms) var(--site-ease, ease);
+}
+
+.mock-landing-page-nav,
+.mock-landing-page-main {
+  position: relative;
+}
+
+/* Nav */
+
+.mock-landing-page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.mock-landing-page-brand {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: var(--site-font-head);
+  color: var(--mock-lp-text);
+}
+
+.mock-landing-page-brand .brand-get,
+.mock-landing-page-brand .brand-drip {
+  color: inherit;
+}
+
+.mock-landing-page-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mock-landing-page-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--mock-lp-muted);
+  white-space: nowrap;
+}
+
+.mock-landing-page-phone svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.mock-landing-page-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mock-landing-page-menu-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--mock-lp-text);
+}
+
+.mock-landing-page-menu-icon {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mock-lp-btn-bg);
+  box-shadow: var(--site-shadow-sm);
+}
+
+.mock-landing-page-menu-icon span {
+  display: block;
+  width: 10px;
+  height: 1.5px;
+  margin: 0 auto;
+  background: var(--mock-lp-btn-fg);
+  border-radius: 1px;
+}
+
+/* Main layout */
+
+.mock-landing-page-main {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 18px;
+  align-items: center;
+}
+
+/* Copy column */
+
+.mock-landing-page-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.mock-landing-page-headline {
+  margin: 0;
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-weight: var(--site-hero-headline-weight, 700);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--mock-lp-accent);
+  font-family: var(--site-font-head);
+  transition: color var(--site-duration-md, 300ms) var(--site-ease, ease);
+}
+
+
+.mock-landing-page-subhead {
+  margin: 0;
+  max-width: 280px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--mock-lp-muted);
+}
+
+.mock-landing-page-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mock-landing-page-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 22px;
+  border-radius: var(--site-radius-full, 999px);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mock-lp-btn-fg);
+  background: var(--mock-lp-btn-bg);
+  border: 2px solid transparent;
+  box-shadow: var(--site-shadow-sm);
+  transition:
+    background var(--site-duration-sm, 200ms) var(--site-ease, ease),
+    color var(--site-duration-sm, 200ms) var(--site-ease, ease),
+    box-shadow var(--site-duration-sm, 200ms) var(--site-ease, ease),
+    border-color var(--site-duration-sm, 200ms) var(--site-ease, ease);
+}
+
+.mock-landing-page-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 14px;
+  color: var(--mock-lp-btn-fg);
+  background: var(--mock-lp-btn-bg);
+  box-shadow: var(--site-shadow-sm);
+}
+
+/* Social proof */
+
+.mock-landing-page-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-top: 4px;
+}
+
+.mock-landing-page-proof-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.mock-landing-page-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--mock-lp-bg);
+  margin-left: -8px;
+}
+
+.mock-landing-page-avatar:first-child {
+  margin-left: 0;
+}
+
+.mock-landing-page-avatar--1 {
+  background: linear-gradient(
+    135deg,
+    var(--site-hero-shape-1, var(--site-accent)),
+    var(--site-hero-shape-2, var(--site-accent-2))
+  );
+}
+
+.mock-landing-page-avatar--2 {
+  background: linear-gradient(
+    135deg,
+    var(--site-hero-shape-3, var(--site-accent-2)),
+    var(--site-accent)
+  );
+}
+
+.mock-landing-page-avatar--3 {
+  background: linear-gradient(
+    135deg,
+    var(--site-hero-shape-4, var(--site-accent)),
+    color-mix(in srgb, var(--site-accent) 60%, white)
+  );
+}
+
+.mock-landing-page-proof-text {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--mock-lp-text);
+}
+
+.mock-landing-page-rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+
+.mock-landing-page-rating-score {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mock-lp-text);
+}
+
+.mock-landing-page-stars {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--mock-lp-accent);
+}
+
+.mock-landing-page-rating-label {
+  flex-basis: 100%;
+  font-size: 9px;
+  color: var(--mock-lp-muted);
+  margin-top: -2px;
+}
+
+/* Visual column — fixed palette (unchanged across design skills) */
+
+.mock-landing-page-visual {
+  --mock-lp-scene-sky: #dbeafe;
+  --mock-lp-scene-sky-end: #eff6ff;
+  --mock-lp-scene-mountain: #94a3b8;
+  --mock-lp-scene-water: #64748b;
+  --mock-lp-scene-ground: #c8b896;
+  --mock-lp-scene-house: #8fa88a;
+  --mock-lp-scene-house-dark: #6b7280;
+  --mock-lp-scene-door: #374151;
+  --mock-lp-visual-card-bg: #ffffff;
+  --mock-lp-visual-card-text: #111111;
+  --mock-lp-visual-card-muted: #5c5c5c;
+  --mock-lp-visual-card-border: rgba(0, 0, 0, 0.08);
+  --mock-lp-visual-accent: #2d5a4a;
+  --mock-lp-visual-card-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 12px 32px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+  min-height: 300px;
+}
+
+.mock-landing-page-scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--mock-lp-visual-card-shadow);
+}
+
+.mock-landing-page-scene-sky {
+  position: absolute;
+  inset: 0 0 42%;
+  background: linear-gradient(
+    180deg,
+    var(--mock-lp-scene-sky) 0%,
+    var(--mock-lp-scene-sky-end) 100%
+  );
+}
+
+.mock-landing-page-scene-mountains {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 38%;
+  height: 28%;
+  background:
+    linear-gradient(165deg, transparent 40%, var(--mock-lp-scene-mountain) 40.5% 55%, transparent 55.5%),
+    linear-gradient(195deg, transparent 35%, #b0bac7 35.5% 50%, transparent 50.5%);
+  opacity: 0.85;
+}
+
+.mock-landing-page-scene-water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28%;
+  height: 14%;
+  background: color-mix(in srgb, var(--mock-lp-scene-water) 75%, #475569);
+  opacity: 0.55;
+}
+
+.mock-landing-page-scene-ground {
+  position: absolute;
+  inset: auto 0 0;
+  height: 32%;
+  background: var(--mock-lp-scene-ground);
+}
+
+.mock-landing-page-scene-house {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  transform: translateX(-50%);
+  width: 38%;
+  z-index: 2;
+}
+
+.mock-landing-page-scene-roof {
+  display: block;
+  width: 100%;
+  height: 28px;
+  background: color-mix(in srgb, var(--mock-lp-scene-house) 80%, var(--mock-lp-scene-house-dark));
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.mock-landing-page-scene-body {
+  display: block;
+  width: 88%;
+  height: 52px;
+  margin: -2px auto 0;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--mock-lp-scene-house) 90%, white) 0%,
+    var(--mock-lp-scene-house) 100%
+  );
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.mock-landing-page-scene-door {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 22px;
+  background: var(--mock-lp-scene-door);
+  border-radius: 2px 2px 0 0;
+}
+
+/* Floating cards on visual — fixed styling */
+
+.mock-landing-page-visual .mock-landing-page-card {
+  border-radius: 14px;
+  background: var(--mock-lp-visual-card-bg);
+  border: 1px solid var(--mock-lp-visual-card-border);
+  box-shadow: var(--mock-lp-visual-card-shadow);
+  transition: none;
+}
+
+.mock-landing-page-card--discount {
+  top: 8%;
+  left: 4%;
+  max-width: 120px;
+}
+
+.mock-landing-page-card--tour {
+  top: 34%;
+  right: 2%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+}
+
+.mock-landing-page-card--quote {
+  bottom: 14%;
+  left: 2%;
+  max-width: 150px;
+}
+
+.mock-landing-page-visual .mock-landing-page-card--quote p {
+  margin: 0;
+  font-size: 8px;
+  line-height: 1.45;
+  color: var(--mock-lp-visual-card-muted);
+}
+
+.mock-landing-page-visual .mock-landing-page-card--price {
+  bottom: 6%;
+  right: 4%;
+  min-width: 118px;
+}
+
+.mock-landing-page-visual .mock-landing-page-card-eyebrow {
+  margin: 0 0 2px;
+  font-size: 8px;
+  color: var(--mock-lp-visual-card-muted);
+}
+
+.mock-landing-page-visual .mock-landing-page-card-stat {
+  margin: 0 0 6px;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--mock-lp-visual-card-text);
+  font-family: var(--site-font-head);
+}
+
+.mock-landing-page-visual .mock-landing-page-card-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.mock-landing-page-visual .mock-landing-page-card-btn--outline {
+  color: var(--mock-lp-visual-card-text);
+  border: 1px solid var(--mock-lp-visual-card-border);
+  background: transparent;
+}
+
+.mock-landing-page-visual .mock-landing-page-tour-thumb {
+  position: relative;
+  width: 42px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  overflow: hidden;
+}
+
+.mock-landing-page-visual .mock-landing-page-tour-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--mock-lp-visual-accent);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.mock-landing-page-visual .mock-landing-page-tour-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--mock-lp-visual-card-text);
+}
+
+.mock-landing-page-visual .mock-landing-page-tour-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mock-lp-visual-accent);
+}
+
+.mock-landing-page-visual .mock-landing-page-card-title {
+  margin: 0 0 2px;
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--mock-lp-visual-card-text);
+}
+
+.mock-landing-page-visual .mock-landing-page-card-price {
+  margin: 0 0 2px;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--mock-lp-visual-card-text);
+  font-family: var(--site-font-head);
+}
+
+.mock-landing-page-visual .mock-landing-page-card-meta {
+  margin: 0;
+  font-size: 8px;
+  color: var(--mock-lp-visual-card-muted);
+}
+
+.mock-landing-page-card {
+  position: absolute;
+  padding: 10px 12px;
+}
+
+/* Brand hero media wrapper */
+
+.brand-hero-media--landing {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.brand-hero-media--landing .mock-landing-page {
+  min-height: 420px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mock-landing-page {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .mock-landing-page-phone {
+    display: none;
+  }
+
+  .mock-landing-page-main {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-landing-page-visual {
+    min-height: 260px;
+  }
+
+  .mock-landing-page-scene {
+    min-height: 260px;
+  }
+
+  .mock-landing-page-card--quote {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mock-landing-page {
+    padding: 16px 14px 18px;
+  }
+
+  .mock-landing-page-proof {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mock-landing-page-card--discount,
+  .mock-landing-page-card--tour {
+    transform: scale(0.92);
+    transform-origin: top left;
+  }
+}

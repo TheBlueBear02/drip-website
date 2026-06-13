@@ -23,6 +23,15 @@ import { artDecoMeta } from './registered/art-deco/meta';
 import { getdripBrandTheme } from './registered/getdrip-brand/theme';
 import { getdripBrandMeta } from './registered/getdrip-brand/meta';
 
+import { auroraSoftTheme } from './registered/aurora-soft/theme';
+import { auroraSoftMeta } from './registered/aurora-soft/meta';
+
+import { analyticsDarkTheme } from './registered/analytics-dark/theme';
+import { analyticsDarkMeta } from './registered/analytics-dark/meta';
+
+import { frostedObsidianTheme } from './registered/frosted-obsidian/theme';
+import { frostedObsidianMeta } from './registered/frosted-obsidian/meta';
+
 export const skillThemes = {
   'getdrip-brand': getdripBrandTheme,
   'linear-modern': linearModernTheme,
@@ -32,6 +41,9 @@ export const skillThemes = {
   'neo-brutalism': neoBrutalismTheme,
   'hand-drawn': handDrawnTheme,
   'art-deco': artDecoTheme,
+  'aurora-soft': auroraSoftTheme,
+  'analytics-dark': analyticsDarkTheme,
+  'frosted-obsidian': frostedObsidianTheme,
 };
 
 export const skillMetas = {
@@ -43,6 +55,9 @@ export const skillMetas = {
   'neo-brutalism': neoBrutalismMeta,
   'hand-drawn': handDrawnMeta,
   'art-deco': artDecoMeta,
+  'aurora-soft': auroraSoftMeta,
+  'analytics-dark': analyticsDarkMeta,
+  'frosted-obsidian': frostedObsidianMeta,
 };
 
 // Installable library skills (excludes site-only getdrip-brand theme)
@@ -50,6 +65,9 @@ export const skillMetas = {
 export const SKILL_STRIP_VISIBLE_COUNT = 6;
 
 export const skillList = [
+  frostedObsidianMeta,
+  auroraSoftMeta,
+  analyticsDarkMeta,
   clayPremiumMeta,
   linearModernMeta,
   neoBrutalismMeta,
@@ -58,3 +76,23 @@ export const skillList = [
   artDecoMeta,
   handDrawnMeta,
 ];
+
+/**
+ * Skills in skills/{projectType}/ have meta.projectType set.
+ * Root-level skills (no projectType) appear for landing, saas, and portfolio.
+ */
+export function getSkillsForProjectType(projectTypeId) {
+  return skillList.filter((skill) => {
+    if (skill.projectType) {
+      return skill.projectType === projectTypeId;
+    }
+    return projectTypeId !== 'dashboard';
+  });
+}
+
+/** Clears activeSkill when it is not available for the selected project type. */
+export function retainActiveSkillForProjectType(activeSkill, projectTypeId) {
+  if (!activeSkill) return activeSkill;
+  const available = getSkillsForProjectType(projectTypeId);
+  return available.some((skill) => skill.id === activeSkill) ? activeSkill : null;
+}

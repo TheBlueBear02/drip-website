@@ -144,7 +144,7 @@
 .skill-switcher-scroll .skill-chip:hover .skill-chip-name {
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: #000000;
+  text-decoration-color: var(--site-text);
   text-decoration-thickness: 0.5px;
 }
 
@@ -172,7 +172,7 @@
   right: 0;
   bottom: -4px;
   height: 0.5px;
-  background-color: #000000;
+  background-color: var(--site-text);
 }
 
 .skill-switcher-scroll .skill-chip--brand.skill-chip-active {

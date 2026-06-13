@@ -3,6 +3,7 @@ import HeroProjectTypes from '@/components/ui/HeroProjectTypes';
 import HeroVideo from './HeroVideo';
 import HeroCharacterWord from './HeroCharacterWord';
 import SkillHeroShell from '@/components/heroes/SkillHeroShell';
+import BrandHeroMedia from '@/components/heroes/brand/BrandHeroMedia';
 import { resolveSkillId, isBrandTheme, FEATURED_SKILL_ID } from '@/utils/resolveSkill';
 import { resolveHeroType, DEFAULT_HERO_TYPE } from '@/data/heroTypes';
 import './Hero.css';
@@ -59,13 +60,25 @@ function Hero() {
   );
 
   if (isBrand) {
+    const brandHeroClass = [
+      'hero',
+      'hero--brand',
+      hasSelectedProjectType ? `hero--brand-${heroType}` : 'hero--brand-intro',
+    ]
+      .filter(Boolean)
+      .join(' ');
+
     return (
-      <section id="home" className="hero hero--brand">
+      <section id="home" className={brandHeroClass}>
         <div className="container">
           <div className="hero-split">
             <div className="hero-copy">{copyContent}</div>
             <div className="hero-media">
-              <HeroVideo />
+              {hasSelectedProjectType ? (
+                <BrandHeroMedia heroType={heroType} />
+              ) : (
+                <HeroVideo />
+              )}
             </div>
           </div>
         </div>

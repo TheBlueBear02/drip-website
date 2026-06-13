@@ -74,7 +74,7 @@ html.skill-strip-collapsed .nav {
 }
 
 .nav-link {
-  color: #000000;
+  color: var(--site-text);
   text-decoration: none;
   font-size: 14px;
   font-family: var(--site-font-body);
@@ -82,7 +82,7 @@ html.skill-strip-collapsed .nav {
 }
 
 .nav-link:hover {
-  color: #000000;
+  color: var(--site-accent);
 }
 
 .nav-right {
@@ -98,7 +98,7 @@ html.skill-strip-collapsed .nav {
   gap: 6px;
   padding: 6px 12px;
   border-radius: var(--site-radius-md);
-  color: #000000;
+  color: var(--site-text);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
@@ -108,7 +108,7 @@ html.skill-strip-collapsed .nav {
 }
 
 .nav-stars:hover {
-  color: #000000;
+  color: var(--site-text);
   background-color: var(--site-surface-2);
 }
 

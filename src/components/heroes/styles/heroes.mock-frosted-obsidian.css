@@ -1,0 +1,212 @@
+/* Frosted Obsidian — glass dashboard mock overrides */
+
+html[data-skill='frosted-obsidian'] .hero-preview-media {
+  padding: 16px;
+  border-radius: var(--site-radius-lg);
+  background: linear-gradient(145deg, #0f1b2d 0%, #1a2744 50%, #0d1526 100%);
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard {
+  --mock-dash-bg: transparent;
+  --mock-dash-sidebar-bg: rgba(255, 255, 255, 0.08);
+  --mock-dash-card-bg: rgba(0, 0, 0, 0.35);
+  --mock-dash-text: #ffffff;
+  --mock-dash-muted: #a0a0a0;
+  --mock-dash-border: rgba(255, 255, 255, 0.18);
+  --mock-dash-accent: #ffffff;
+  --mock-dash-positive: #4ade80;
+  --mock-dash-negative: #f87171;
+  --mock-dash-stack-1: #facc15;
+  --mock-dash-stack-2: #60a5fa;
+  --mock-dash-stack-3: #4ade80;
+  --mock-dash-stack-4: #a78bfa;
+  --mock-dash-stack-5: #67e8f9;
+
+  position: relative;
+  display: block;
+  min-height: 420px;
+  padding: 14px 14px 14px 52px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  overflow: visible;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-sidebar {
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 44px;
+  padding: 12px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-brand,
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-label,
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-item span:not(.mock-dashboard-nav-icon),
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-badge,
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-tag,
+html[data-skill='frosted-obsidian'] .mock-dashboard-sidebar-footer {
+  display: none;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav {
+  gap: 6px;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-group {
+  gap: 6px;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-item {
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 50%;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-icon,
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-icon:not(span) {
+  width: 13px;
+  height: 13px;
+  border-radius: 0;
+  background: none;
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-item--active {
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-item--active .mock-dashboard-nav-icon,
+html[data-skill='frosted-obsidian'] .mock-dashboard-nav-item--active .mock-dashboard-nav-icon:not(span) {
+  background: none;
+  color: #1a1a2e;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-body {
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-topbar {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-search,
+html[data-skill='frosted-obsidian'] .mock-dashboard-filter {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-filter--primary {
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-card {
+  border: none;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: none;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-page-title {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-card-metric {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-sales-stack {
+  gap: 0;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-sales-segment {
+  border-radius: 0;
+  min-height: 0;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-type-pill {
+  background: rgba(255, 255, 255, 0.08);
+  color: #a0a0a0;
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-rate-bar {
+  background: linear-gradient(90deg, #facc15, #60a5fa);
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-donut {
+  background: conic-gradient(
+    #facc15 0deg 120deg,
+    #60a5fa 120deg 220deg,
+    #4ade80 220deg 300deg,
+    #a78bfa 300deg 330deg,
+    #67e8f9 330deg 360deg
+  );
+}
+
+html[data-skill='frosted-obsidian'] .mock-dashboard-table th,
+html[data-skill='frosted-obsidian'] .mock-dashboard-table td {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Site-wide glass chrome */
+
+html[data-skill='frosted-obsidian'] .nav,
+html[data-skill='frosted-obsidian'] .skill-switcher-strip {
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+html[data-skill='frosted-obsidian'] .skill-chip-active {
+  color: #ffffff;
+}
+
+html[data-skill='frosted-obsidian'] .skill-chip-active .skill-chip-name {
+  text-decoration-color: #ffffff;
+}
+
+html[data-skill='frosted-obsidian'] .skill-switcher-scroll .skill-chip:hover .skill-chip-name {
+  text-decoration-color: #ffffff;
+}
+
+html[data-skill='frosted-obsidian'] .skills-preview-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+html[data-skill='frosted-obsidian'] .skills-preview-card-btn-active {
+  background: #ffffff;
+  color: #1a1a2e;
+}

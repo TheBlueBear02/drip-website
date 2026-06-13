@@ -1,0 +1,48 @@
+{
+  "name": "analytics-dark",
+  "version": "1.0.0",
+  "description": "Professional command-center dashboard aesthetic. Ultra-tight data hierarchy, semantic color, monochromatic precision. The Segment/Vercel/Linear analytics look — built for reading data fast, not looking decorative.",
+  "category": "dark",
+  "projectType": "dashboard",
+  "projectTypeLabel": "Dashboard",
+  "mood": ["precise", "utilitarian", "commanding", "focused", "professional"],
+  "stack": ["react", "tailwind", "recharts", "lucide-react"],
+  "dependencies": {
+    "recharts": "^2.0.0",
+    "lucide-react": "^0.263.0"
+  },
+  "devDependencies": {},
+  "author": "getdrip",
+  "preview": "https://getdrip.dev/skills/analytics-dark",
+  "docs": "https://getdrip.dev/docs/analytics-dark",
+  "components": 8,
+  "tags": ["dark", "data", "analytics", "dashboard", "professional", "charts", "metrics", "command-center"],
+  "palette": {
+    "background": "#0A0A0B",
+    "surface": "#111113",
+    "elevated": "#1A1A1F",
+    "foreground": "#F4F4F5",
+    "muted": "#A1A1AA",
+    "accent": "#3B82F6",
+    "positive": "#10B981",
+    "negative": "#F43F5E",
+    "warning": "#F59E0B",
+    "border": "#27272A"
+  },
+  "fonts": {
+    "metrics": "Geist Mono",
+    "ui": "Inter"
+  },
+  "signature_traits": [
+    "Metric numbers in Geist Mono — monospaced digits prevent layout shift as values update",
+    "4:1 size ratio: metric at 48px, label at 12px — never equal weight",
+    "Three background layers only: #0A0A0B base → #111113 cards → #1A1A1F elevated",
+    "Color used only for semantic meaning — never decorative",
+    "No card shadows — background contrast separates surfaces",
+    "Sidebar at 60% text opacity — content area is always the visual hero",
+    "Charts: custom 6-color semantic palette, never Recharts defaults",
+    "Skeleton loaders must match the exact shape of the content they replace",
+    "Positive delta = emerald #10B981, Negative delta = rose #F43F5E — always with a directional arrow",
+    "No blue-purple gradients anywhere — blue (#3B82F6) is reserved for interactive elements only"
+  ]
+}

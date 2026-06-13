@@ -178,6 +178,8 @@ export const [camelCaseSkillName]Meta = {
   name: '',            // Human display name. e.g. 'Retro Terminal'
   description: '',     // From skill.json. One punchy sentence.
   category: '',        // From skill.json. One of: dark | light | colorful | minimal | expressive
+  projectType: '',     // Optional. When skill lives in skills/{projectType}/ (e.g. 'dashboard'),
+                       // set to the heroTypeList id. Omit for root-level site designs (landing/saas/portfolio).
   mood: [],            // From skill.json. Array of 3-5 adjective strings.
   tags: [],            // From skill.json. Array of tag strings.
   components: 0,       // From skill.json. Number of components in the skill.

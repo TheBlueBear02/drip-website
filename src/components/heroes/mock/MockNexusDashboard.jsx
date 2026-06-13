@@ -1,9 +1,36 @@
+import {
+  BarChart2,
+  CreditCard,
+  FileText,
+  HelpCircle,
+  LayoutDashboard,
+  MessageSquare,
+  Package,
+  Settings,
+  Shield,
+  Users,
+  Zap,
+} from 'lucide-react';
 import MockKpi from './MockKpi';
 import MockBarChart from './MockBarChart';
 
 const GENERAL_NAV = ['Dashboard', 'Payment', 'Customers', 'Message'];
 const TOOLS_NAV = ['Product', 'Invoice', 'Analytics', 'Automation'];
 const SUPPORT_NAV = ['Settings', 'Security', 'Help'];
+
+const NAV_ICONS = {
+  Dashboard: LayoutDashboard,
+  Payment: CreditCard,
+  Customers: Users,
+  Message: MessageSquare,
+  Product: Package,
+  Invoice: FileText,
+  Analytics: BarChart2,
+  Automation: Zap,
+  Settings,
+  Security: Shield,
+  Help: HelpCircle,
+};
 
 const SALES_STACKS = [
   [72, 58, 45, 38, 28],
@@ -39,7 +66,10 @@ function MockNexusDashboard() {
         <nav className="mock-dashboard-nav">
           <div className="mock-dashboard-nav-group">
             <p className="mock-dashboard-nav-label">General</p>
-            {GENERAL_NAV.map((item) => (
+            {GENERAL_NAV.map((item) => {
+              const NavIcon = NAV_ICONS[item];
+
+              return (
               <div
                 key={item}
                 className={[
@@ -49,34 +79,55 @@ function MockNexusDashboard() {
                   .filter(Boolean)
                   .join(' ')}
               >
-                <span className="mock-dashboard-nav-icon" />
+                {NavIcon ? (
+                  <NavIcon className="mock-dashboard-nav-icon" size={14} strokeWidth={1.75} aria-hidden />
+                ) : (
+                  <span className="mock-dashboard-nav-icon" />
+                )}
                 <span>{item}</span>
                 {item === 'Message' && <span className="mock-dashboard-nav-badge">8</span>}
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mock-dashboard-nav-group">
             <p className="mock-dashboard-nav-label">Tools</p>
-            {TOOLS_NAV.map((item) => (
+            {TOOLS_NAV.map((item) => {
+              const NavIcon = NAV_ICONS[item];
+
+              return (
               <div key={item} className="mock-dashboard-nav-item">
-                <span className="mock-dashboard-nav-icon" />
+                {NavIcon ? (
+                  <NavIcon className="mock-dashboard-nav-icon" size={14} strokeWidth={1.75} aria-hidden />
+                ) : (
+                  <span className="mock-dashboard-nav-icon" />
+                )}
                 <span>{item}</span>
                 {item === 'Automation' && (
                   <span className="mock-dashboard-nav-tag">Beta</span>
                 )}
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mock-dashboard-nav-group">
             <p className="mock-dashboard-nav-label">Support</p>
-            {SUPPORT_NAV.map((item) => (
+            {SUPPORT_NAV.map((item) => {
+              const NavIcon = NAV_ICONS[item];
+
+              return (
               <div key={item} className="mock-dashboard-nav-item">
-                <span className="mock-dashboard-nav-icon" />
+                {NavIcon ? (
+                  <NavIcon className="mock-dashboard-nav-icon" size={14} strokeWidth={1.75} aria-hidden />
+                ) : (
+                  <span className="mock-dashboard-nav-icon" />
+                )}
                 <span>{item}</span>
               </div>
-            ))}
+              );
+            })}
           </div>
         </nav>
 
@@ -144,12 +195,12 @@ function MockNexusDashboard() {
                 {SALES_STACKS.map((stack, monthIndex) => (
                   <div key={monthIndex} className="mock-dashboard-sales-col">
                     <div className="mock-dashboard-sales-stack">
-                      {stack.map((height, segmentIndex) => (
+                      {stack.map((value, segmentIndex) => (
                         <span
                           key={segmentIndex}
                           className="mock-dashboard-sales-segment"
                           style={{
-                            height: `${height}%`,
+                            flexGrow: value,
                             background: STACK_COLORS[segmentIndex],
                           }}
                         />

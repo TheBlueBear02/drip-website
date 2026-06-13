@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSkillContext } from '@/context/SkillContext';
-import { skillList, skillMetas, SKILL_STRIP_VISIBLE_COUNT } from '@/skills';
+import { getSkillsForProjectType, skillMetas, SKILL_STRIP_VISIBLE_COUNT } from '@/skills';
 import { BRAND_SKILL_ID, resolveSkillId } from '@/utils/resolveSkill';
 import { heroTypeList } from '@/data/heroTypes';
 import { useScrollCollapse } from '@/hooks/useScrollCollapse';
@@ -107,7 +107,7 @@ function SkillSwitcherStrip() {
     document.getElementById('home')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const visibleSkills = skillList.slice(0, SKILL_STRIP_VISIBLE_COUNT);
+  const visibleSkills = getSkillsForProjectType(activeHeroType).slice(0, SKILL_STRIP_VISIBLE_COUNT);
 
   const handleTypeSelect = (typeId) => {
     const typeChanged = typeId !== activeHeroType;

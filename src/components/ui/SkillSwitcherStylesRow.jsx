@@ -87,12 +87,19 @@ function SkillSwitcherStylesRow({
             <button
               key={skill.id}
               type="button"
-              className={`skill-chip ${isActive ? 'skill-chip-active' : ''}`}
+              className={[
+                'skill-chip',
+                isActive ? 'skill-chip-active' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
               onClick={() => onSkillClick(skill.id)}
             >
               <span
                 className="skill-chip-swatch"
-                style={{ backgroundColor: skill.accentColor }}
+                style={{
+                  backgroundColor: skill.swatchColor ?? skill.accentColor,
+                }}
               />
               <span className="skill-chip-name">{skill.name}</span>
             </button>

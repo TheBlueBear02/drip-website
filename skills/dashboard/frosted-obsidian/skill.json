@@ -1,0 +1,43 @@
+{
+  "name": "frosted-obsidian",
+  "version": "1.0.0",
+  "description": "Glassmorphism dashboard aesthetic — frosted translucent panels over atmospheric scenes, white active states, semantic chart color. The visionOS/Raycast/Linear health-analytics look.",
+  "category": "dark",
+  "projectType": "dashboard",
+  "projectTypeLabel": "Dashboard",
+  "mood": ["glassmorphism", "translucent", "futuristic", "high-contrast", "sophisticated"],
+  "stack": ["react", "tailwind", "recharts", "lucide-react"],
+  "dependencies": {
+    "recharts": "^2.0.0",
+    "lucide-react": "^0.263.0"
+  },
+  "devDependencies": {},
+  "author": "getdrip",
+  "preview": "https://getdrip.dev/skills/frosted-obsidian",
+  "docs": "https://getdrip.dev/docs/frosted-obsidian",
+  "components": 6,
+  "tags": ["dark", "glassmorphism", "dashboard", "health", "analytics", "frosted", "translucent", "visionos"],
+  "palette": {
+    "background": "#0F1B2D",
+    "foreground": "#FFFFFF",
+    "accent": "#FFFFFF",
+    "muted": "#A0A0A0",
+    "border": "rgba(255, 255, 255, 0.18)"
+  },
+  "fonts": {
+    "heading": "Plus Jakarta Sans",
+    "body": "Plus Jakarta Sans"
+  },
+  "signature_traits": [
+    "All panels use rgba backgrounds plus backdrop-filter blur — never opaque #111 card fills",
+    "Main shell border-radius 32px with 1px rgba(255,255,255,0.18) rim — inner sections 20px, no inner shadows",
+    "Floating pill sidebar detached 24px from edge — not a full-height docked column",
+    "Active navigation uses solid white 40px circles with dark icons — not blue highlight bars",
+    "3:1 metric hierarchy — 36px values with 18px inline units, 12px labels",
+    "Bar charts use fully rounded top caps with percentage labels inside the bar — never square tops",
+    "Chart palette: yellow highlight, grey inactive — Recharts defaults always overridden",
+    "Semantic yellow for in-progress, green for complete — never tinted card backgrounds for status",
+    "Plus Jakarta Sans throughout — Inter and monospace metrics forbidden",
+    "Scene photograph or cool gradient required behind UI — glass must show depth through blur"
+  ]
+}

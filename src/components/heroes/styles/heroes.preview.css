@@ -1,5 +1,13 @@
 /* Hero archetype preview layout */
 
+/* Tighter spacing under sticky header when showing project-type mocks */
+.hero.hero-preview--dashboard:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn),
+.hero.hero-preview--landing:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn),
+.hero.hero-preview--saas:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn),
+.hero.hero-preview--portfolio:not(.hero--playful-geometric):not(.hero--neo-brutalism):not(.hero--hand-drawn) {
+  padding-top: 40px;
+}
+
 .hero-preview-content {
   position: relative;
   z-index: 1;

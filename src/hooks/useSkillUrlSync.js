@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useSkillContext } from '@/context/SkillContext';
+import { retainActiveSkillForProjectType } from '@/skills';
 import { parseSkillParam, SKILL_URL_PARAM } from '@/utils/resolveSkill';
 
 /**
@@ -9,12 +10,13 @@ import { parseSkillParam, SKILL_URL_PARAM } from '@/utils/resolveSkill';
  */
 export function useSkillUrlSync() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { activeSkill, setActiveSkill } = useSkillContext();
+  const { activeSkill, setActiveSkill, activeHeroType } = useSkillContext();
 
   useEffect(() => {
     const urlSkill = parseSkillParam(searchParams.get(SKILL_URL_PARAM));
-    setActiveSkill((current) => (current === urlSkill ? current : urlSkill));
-  }, [searchParams, setActiveSkill]);
+    const validSkill = retainActiveSkillForProjectType(urlSkill, activeHeroType);
+    setActiveSkill((current) => (current === validSkill ? current : validSkill));
+  }, [searchParams, setActiveSkill, activeHeroType]);
 
   useEffect(() => {
     if (activeSkill) {

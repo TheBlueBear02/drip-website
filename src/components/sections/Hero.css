@@ -1,3 +1,4 @@
 @import './hero/Hero.base.css';
 @import './hero/Hero.variants.css';
+@import './hero/Hero.brand-types.css';
 @import './hero/Hero.responsive.css';

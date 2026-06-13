@@ -1,18 +1,19 @@
 import { createContext, useCallback, useContext, useState } from 'react';
+import { retainActiveSkillForProjectType } from '@/skills';
 import { getSkillFromSearch } from '@/utils/resolveSkill';
 import { DEFAULT_HERO_TYPE, getInitialHeroTypeFromUrl } from '@/data/heroTypes';
 
 const SkillContext = createContext();
 
-function getInitialActiveSkill() {
+function getInitialActiveSkill(projectTypeId) {
   if (typeof window === 'undefined') return null;
-  return getSkillFromSearch(window.location.search);
+  return retainActiveSkillForProjectType(getSkillFromSearch(window.location.search), projectTypeId);
 }
 
 const initialHeroType = getInitialHeroTypeFromUrl();
 
 export function SkillProvider({ children }) {
-  const [activeSkill, setActiveSkill] = useState(getInitialActiveSkill); // The locked skill
+  const [activeSkill, setActiveSkill] = useState(() => getInitialActiveSkill(initialHeroType.type)); // The locked skill
   const [previewSkill, setPreviewSkill] = useState(null); // Temporary hover state
   const [activeHeroType, setActiveHeroType] = useState(initialHeroType.type);
   const [hasSelectedProjectType, setHasSelectedProjectType] = useState(initialHeroType.hasSelected);
@@ -24,12 +25,14 @@ export function SkillProvider({ children }) {
   const selectProjectType = (typeId) => {
     setActiveHeroType(typeId);
     setHasSelectedProjectType(true);
+    setActiveSkill((current) => retainActiveSkillForProjectType(current, typeId));
   };
 
   const selectProjectTypeFromHero = (typeId) => {
     setActiveHeroType(typeId);
     setHasSelectedProjectType(true);
     setHeroProjectTypePick((count) => count + 1);
+    setActiveSkill((current) => retainActiveSkillForProjectType(current, typeId));
   };
 
   const applyHeroTypeFromUrl = useCallback((typeId) => {
@@ -37,6 +40,7 @@ export function SkillProvider({ children }) {
       setActiveHeroType((current) => (current === typeId ? current : typeId));
       setHasSelectedProjectType(true);
       setNavbarSwitcherStep('styles');
+      setActiveSkill((current) => retainActiveSkillForProjectType(current, typeId));
       return;
     }
 
